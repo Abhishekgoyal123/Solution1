@@ -210,6 +210,8 @@ do
 
         case 11:
 
+
+
             Console.WriteLine("Using An Accountant GAteway to Get an INome");
             Console.WriteLine("Enter staff id to Get an INome");
             int id11 = Convert.ToInt32(Console.ReadLine());
@@ -220,7 +222,8 @@ do
             Console.WriteLine("Enter operations per day for doctor");
             doc1.operationsPerDay = Convert.ToInt32(Console.ReadLine());
 
-            if (id11 >= 1 && id11 <= 100)
+            foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
+                if (id11 >= 1 && id11 <= 100)
              {
                  StaffLogicAbstract staffabcd = new DoctorLogicEx(id11, doc1.patientsDiagonsed, doc1.operationsPerDay);
 
