@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CS_Events;
 
 
-namespace CS_Search.Entities
+namespace CS_Events
 {
     public class Staff
     {
@@ -36,8 +37,6 @@ namespace CS_Search.Entities
         
         
         public string Email { get; set; } = string.Empty;
-
-        public string Location { get; set; } = string.Empty;
         public string DeptName { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;
         public string StaffCategory { get; set; } = string.Empty;

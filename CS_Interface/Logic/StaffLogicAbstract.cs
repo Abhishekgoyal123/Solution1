@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using CS_Search.Models;
-using CS_Search.Logic;
 
-namespace CS_Search.Logic
+
+namespace CS_Interface.Logic
 {
     
-        public abstract class StaffLogicAbstract
-        {
+        public abstract class StaffLogicAbstract 
+    {
             protected decimal BasicPay = 0;
 
         public abstract decimal CalculateIncome();
@@ -19,18 +18,15 @@ namespace CS_Search.Logic
               //  return this.BasicPay = 10000;
             //}
 
-        public  virtual decimal CalculateBasicPay()
+        public virtual decimal CalculateBasicPay()
         {
             return this.BasicPay = 0;
         }
         public abstract decimal ShareToHospital();
-
-        //public abstract decimal Tax();
-    
-}
+      }
     
 
-    public class DoctorLogicEx : StaffLogicAbstract
+    public class DoctorLogicEx : StaffLogicAbstract 
     {
         private int PatientsDiagonsed = 0;
         private int OperationsPerDay = 0;
@@ -39,7 +35,7 @@ namespace CS_Search.Logic
 
         public override decimal CalculateBasicPay()
         {
-            return BasicPay = 10000;
+            return this.BasicPay = 10000;
         }
 
         public DoctorLogicEx(int id, int patientsDiagonsed, int operationsPerDay)
@@ -67,16 +63,8 @@ namespace CS_Search.Logic
         }
         public override decimal ShareToHospital()
         {
-            decimal ShareToHospital = TotalIncome * Convert.ToDecimal(0.2);
-
-            return ShareToHospital;
+            return TotalIncome * Convert.ToDecimal(0.2);
         }
-
-        //public override decimal GrossIncome()
-        //{
-        //    decimal tax = TotalIncome * Convert.ToDecimal(0.2);
-        //}
-
     }
 
 

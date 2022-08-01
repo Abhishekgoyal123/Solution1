@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CS_Search.Entities;
-using CS_Search.Models;
-using CS_Search.Database;
+using CS_Events;
 
-namespace CS_Search.Models
+
+namespace CS_Events
 {
+
+    
     public abstract class StaffLogic
     {
         public abstract void RegisterStaff(Staff statff);
@@ -31,8 +32,8 @@ namespace CS_Search.Models
 
     public class DoctorLogic : StaffLogic
     {
+       
 
-        
         public override void RegisterStaff(Staff statff)
         {
             if (HospitalDbStore.GlobalStaffStore != null)
@@ -43,6 +44,7 @@ namespace CS_Search.Models
         public override Dictionary<int, Staff> GetStatffs()
         {
             return HospitalDbStore.GlobalStaffStore;
+            
         }
         public override Dictionary<int, Staff> UpdateStaffInfo(int id, Staff staff)
         {
@@ -51,6 +53,8 @@ namespace CS_Search.Models
                 if (s.Key == id)
                 {
                     var a = (Doctor)s.Value;
+
+                    
                     a.StaffName = staff.StaffName;
                     Doctor st = (Doctor)staff;
                     a.Specilization = st.Specilization;

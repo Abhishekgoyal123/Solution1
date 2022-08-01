@@ -1,12 +1,116 @@
 ﻿// See https://aka.ms/new-console-template for more information
-string a = "The James Bond series focuses on a fictional British Secret Service agent created in 1953 by writer Ian Fleming, who featured him in twelve novels and two short-story collections. Since Fleming's death in 1964, eight other authors have written authorised Bond novels or novelisations: Kingsley Amis, Christopher Wood, John Gardner, Raymond Benson, Sebastian Faulks, Jeffery Deaver, William Boyd, and Anthony Horowitz. The latest novel is Forever and a Day by Anthony Horowitz, published in May 2018. Additionally Charlie Higson wrote a series on a young James Bond, and Kate Westbrook wrote three novels based on the diaries of a recurring series character, Moneypenny. The character—also known by the code number 007 (pronounced double-O-seven)—has also been adapted for television, radio, comic strip, video games and film. The films are one of the longest continually running film series and have grossed over US$7.04 billion in total, making it the fifth-highest-grossing film series to date, which started in 1962 with Dr. No, starring Sean Connery as Bond. As of 2021, there have been twenty-five films in the Eon Productions series. The most recent Bond film, No Time to Die (2021), stars Daniel Craig in his fifth portrayal of Bond; he is the sixth actor to play Bond in the Eon series. There have also been two independent productions of Bond films: Casino Royale (a 1967 spoof starring David Niven) and Never Say Never Again (a 1983 remake of an earlier Eon-produced film, 1965's Thunderball, both starring Connery). In 2015, the series was estimated to be worth $19.9 billion,[1] making James Bond one of the highest-grossing media franchises of all time.";
 
-int count = 0;
 
-for(int i = 0; i < a.Length; i++)
-{
-    if (a[i] == ' ' && a[i + 1] !=' ') ;
-    count++;
-}
 
-Console.WriteLine(count);
+String[] a = { "Zero ", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ", "Nine " };
+
+String[] b = {"Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ", "Eighteen ", "Nineteen " };
+
+String[] c = { "Zero ", "Ten ", "Twenty ", "Thirty ", "Forty ","Fifty ", "Sixty ", "Seventy ", "Eighty ", "Ninety " , "Hundred" };
+
+
+
+
+int number = 41263, temp,temp1;
+
+    if (number <= 99999)
+    {
+        if (number == 0)
+        {
+            Console.Write($" + {a[number]}");
+
+        }
+
+        if (number >= 1000)
+        {
+
+            temp = number / 1000;
+            if (number % 10000 == 0)
+            {
+                temp = temp / 10;
+                Console.Write($" {b[temp - 1]} Thousand ");
+                return;
+
+            }
+
+            if (number % 1000 == 0)
+            {
+                Console.Write($"{a[temp]} Thousand ");
+                return;
+            }
+            if (temp >= 10 && temp <= 19)
+            {
+                temp = temp % 10;
+                Console.Write($"{b[temp]} +  ");
+                temp = -1;
+            }
+            if (temp >= 20 && temp <= 99)
+            {
+                int i = temp / 10;
+                temp = temp % 10;
+                Console.Write($" {c[i]}");
+
+            }
+            if (temp > 0 && temp <= 9)
+            {
+                Console.Write($"{a[temp]}");
+            }
+
+            Console.Write("Thousand ");
+
+            number = number % 1000;
+
+        }
+        if (number >= 100)
+        {
+            temp = number / 100;
+            if (number % 100 == 0)
+            {
+                Console.Write($"{a[temp]} Hundred ");
+                return;
+            }
+
+            number = number % 100;
+
+            Console.Write($"{a[temp]} Hundred And ");
+
+        }
+
+        if (number >= 10 && number < 20)
+        {
+
+            temp = number % 10;
+
+            Console.Write($"{b[temp]}");
+
+        }
+
+        if (number > 19 && number <= 100)
+        {
+
+            temp = number / 10;
+
+            if (number == 100)
+            {
+                Console.Write($"{c[temp - 1]}");
+                return;
+            }
+
+            number = number % 10;
+
+            Console.Write($"{c[temp]}");
+
+        }
+        if (number < 10)
+        {
+            if (number != 0)
+                Console.Write($"{a[number]}");
+
+        }
+
+    }
+    else
+    {
+        Console.WriteLine("Enter a Smaller Number");
+    }
+

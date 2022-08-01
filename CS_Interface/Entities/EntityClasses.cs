@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace CS_Search.Entities
+
+namespace CS_Interface.Entities
 {
     public class Staff
     {
@@ -16,41 +17,32 @@ namespace CS_Search.Entities
             get { return _StaffId; }
             set
             {
-                if (value < 0)
+                foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
                 {
-                    Console.WriteLine("StaffId cannot be negative");
-                    Console.WriteLine("Enter correct StaffId");
-                    value = Convert.ToInt32(Console.ReadLine());
-                    _StaffId = value;
+                    if (value < 0)
+                    {
+                        Console.WriteLine("StaffId cannot be negative");
+                        Console.WriteLine("Enter correct StaffId");
+                        value = Convert.ToInt32(Console.ReadLine());
+                        _StaffId = value;
+                    }
+
+                    else
+                    {
+                        _StaffId = value;
+                    }
                 }
-                else
-                {
-                    _StaffId = value;
-                }
+                   
             }
         }
         //private string _StaffName;
         public string StaffName { get; set; }
-
-
         
         
         public string Email { get; set; } = string.Empty;
-
-        public string Location { get; set; } = string.Empty;
         public string DeptName { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;
         public string StaffCategory { get; set; } = string.Empty;
-
-        //private int _ContactNo;
-        //public int ContactNo
-        //{
-        //    get { return _ContactNo; }
-        //    set
-        //    {
-        //    _ContactNo = value;
-        //    }
-        //}
 
         private int _ContactNo;
         public int ContactNo
@@ -60,10 +52,10 @@ namespace CS_Search.Entities
             {
                 if (value < 0)
                 {
-                    Console.WriteLine("ContactNo cannot be negative");
-                    Console.WriteLine("Enter correct ContactNo");
+                    Console.WriteLine("Contact number cannot be negative");
+                    Console.WriteLine("Enter correct contact number");
                     value = Convert.ToInt32(Console.ReadLine());
-                    _ContactNo = value;
+                    ContactNo = value;
                 }
                 else
                 {
@@ -78,6 +70,7 @@ namespace CS_Search.Entities
     public class Doctor : Staff
     {
 
+       
         public string Education { get; set; } = string.Empty;
         public string Specilization { get; set; } = string.Empty;
 
@@ -91,8 +84,8 @@ namespace CS_Search.Entities
             {
                 if (value < 0)
                 {
-                    Console.WriteLine("patients Diagonsed cannot be negative");
-                    Console.WriteLine("Enter correct patients Diagonsed");
+                    Console.WriteLine("patientsDiagonsed cannot be negative");
+                    Console.WriteLine("Enter correct patientsDiagonsed");
                     value = Convert.ToInt32(Console.ReadLine());
                     _patientsDiagonsed = value;
                 }
@@ -103,9 +96,7 @@ namespace CS_Search.Entities
             }
         }
 
-
-
-       // public int operationsPerDay { get; set; }
+        //public int operationsPerDay { get; set; }
 
         private int _operationsPerDay;
         public int operationsPerDay
@@ -115,28 +106,24 @@ namespace CS_Search.Entities
             {
                 if (value < 0)
                 {
-                    Console.WriteLine("patients Diagonsed cannot be negative");
-                    Console.WriteLine("Enter correct patients Diagonsed");
+                    Console.WriteLine("operationsPerDay cannot be negative");
+                    Console.WriteLine("Enter correct operationsPerDay");
                     value = Convert.ToInt32(Console.ReadLine());
-                    _operationsPerDay = value;
+                    _patientsDiagonsed = value;
                 }
                 else
                 {
-                    _operationsPerDay = value;
+                    _patientsDiagonsed = value;
                 }
             }
         }
+
+
     }
-
-
-   
-
-
 
     public class Nurse : Staff
     {
-
-   // public int Experience { get; set; }
+        //public int Experience { get; set; }
 
         private int _Experience;
         public int Experience
@@ -146,8 +133,8 @@ namespace CS_Search.Entities
             {
                 if (value < 0)
                 {
-                    Console.WriteLine("patients Diagonsed cannot be negative");
-                    Console.WriteLine("Enter correct patients Diagonsed");
+                    Console.WriteLine("Experience cannot be negative");
+                    Console.WriteLine("Enter correct Experience");
                     value = Convert.ToInt32(Console.ReadLine());
                     _Experience = value;
                 }
@@ -157,18 +144,21 @@ namespace CS_Search.Entities
                 }
             }
         }
-       // public int InjectionApplied { get; set; }
+
+
+
+        //public int InjectionApplied { get; set; }
 
         private int _InjectionApplied;
         public int InjectionApplied
         {
-            get { return _Experience; }
+            get { return _InjectionApplied; }
             set
             {
                 if (value < 0)
                 {
-                    Console.WriteLine("patients Diagonsed cannot be negative");
-                    Console.WriteLine("Enter correct patients Diagonsed");
+                    Console.WriteLine("Injection Applied cannot be negative");
+                    Console.WriteLine("Enter correct Injection Applied");
                     value = Convert.ToInt32(Console.ReadLine());
                     _InjectionApplied = value;
                 }
@@ -178,6 +168,7 @@ namespace CS_Search.Entities
                 }
             }
         }
+
         //public int PatientsMonitored { get; set; }
 
         private int _PatientsMonitored;
@@ -188,8 +179,8 @@ namespace CS_Search.Entities
             {
                 if (value < 0)
                 {
-                    Console.WriteLine("patients Diagonsed cannot be negative");
-                    Console.WriteLine("Enter correct patients Diagonsed");
+                    Console.WriteLine("Patients Monitored cannot be negative");
+                    Console.WriteLine("Enter correct PatientsMonitored");
                     value = Convert.ToInt32(Console.ReadLine());
                     _PatientsMonitored = value;
                 }
@@ -199,8 +190,5 @@ namespace CS_Search.Entities
                 }
             }
         }
-
-        public string Education { get; set; } = string.Empty;
-
     }
 }

@@ -1,33 +1,32 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
 Console.WriteLine("Hello, World!");
 
 
 
-StaffLogic logic = new DoctorLogic();
+IDbOperations<Doctor, int> abcde = new DoctorLogic();
+IDbOperations<Nurse, int> Nurs = new NurseLogic();
+
 
 Doctor d1 = new Doctor()
-
 {
     StaffId = 101,
     StaffName = "Dr. No",
-    Location="Delhi",
+
     Education = "M.B.B.S",
-   Specilization = "General Physician",
+    Specilization = "General Physician",
     Email = "Abcd@gmail.com",
     DeptName = "Cancer",
     Gender = "male",
     StaffCategory = "Doctor",
     ContactNo = 123,
+
 };
-logic.RegisterStaff(d1);
+abcde.Create(1, d1);
 
 Doctor d2 = new Doctor()
 {
     StaffId = 102,
     StaffName = "Dr. Deng",
-    Location = "Pune",
-    Specilization = "Heart",
     Education = "btech",
     Email = "Abcd@gmail.com",
     DeptName = "Cancer",
@@ -35,16 +34,16 @@ Doctor d2 = new Doctor()
     StaffCategory = "Doctor",
     ContactNo = 123,
 
-   
+
 };
-logic.RegisterStaff(d2);
+abcde.Create(d2.StaffId,d2);
 
 Doctor d3 = new Doctor()
 
 {
     StaffId = 103,
     StaffName = "Abhishek",
-    Location = "Pune",
+    // StaffType = "Doctor",
     Education = "M.B.B.S",
     Specilization = "General Physician",
     Email = "Abcd@gmail.com",
@@ -53,7 +52,7 @@ Doctor d3 = new Doctor()
     StaffCategory = "Doctor",
     ContactNo = 123,
 };
-logic.RegisterStaff(d3);
+abcde.Create(d3.StaffId, d3);
 
 
 //logic = new NurseLogic();
@@ -61,9 +60,8 @@ Nurse n1 = new Nurse()
 {
     StaffId = 201,
     StaffName = "Mr. Bee",
-    Location = "Delhi",
     StaffCategory = "Nurse",
-    Education = "xyz",
+    //Education = "xyz",
     Experience = 10,
     Email = "Abcd@gmail.com",
     DeptName = "Cancer",
@@ -71,15 +69,14 @@ Nurse n1 = new Nurse()
     ContactNo = 123,
 };
 
-logic.RegisterStaff(n1);
+Nurs.Create(n1.StaffId, n1);
 
 Nurse n2 = new Nurse()
 {
     StaffId = 202,
     StaffName = "Neha",
-    Location = "Delhi",
     StaffCategory = "Nurse",
-    Education = "xyz",
+    //Education = "xyz",
     Experience = 10,
     Email = "Abcd@gmail.com",
     DeptName = "Heart",
@@ -87,33 +84,34 @@ Nurse n2 = new Nurse()
     ContactNo = 123,
 };
 
-logic.RegisterStaff(n2);
+Nurs.Create(n2.StaffId, n2);
+
+//var a = abcde.GetAll();
+
 
 
 string continueExecution = "y";
 do
 {
-    
-        Console.WriteLine("1. New Doctor Registration");
-        Console.WriteLine("2. Update Doctor Information");
-        Console.WriteLine("3. Delete Doctor Information");
-        Console.WriteLine("4. Display record of all Doctors");
-        Console.WriteLine("5. Search record of a particular doctor");
-        Console.WriteLine("--------------------------------------------------------");
 
-        Console.WriteLine("6. New Nurse Registration");
-        Console.WriteLine("7. Update Nurse Information");
-        Console.WriteLine("8. Delete Nurse Information");
-        Console.WriteLine("9. Display record of all Nurse");
-        Console.WriteLine("10. Search record of a particular Nurse");
+    Console.WriteLine("1. New Doctor Registration");
+    Console.WriteLine("2. Update Doctor Information");
+    Console.WriteLine("3. Delete Doctor Information");
+    Console.WriteLine("4. Display record of all Doctors");
+    Console.WriteLine("5. Search record of a particular doctor");
+    Console.WriteLine("--------------------------------------------------------");
 
-        Console.WriteLine("--------------------------------------------------------");
+    Console.WriteLine("6. New Nurse Registration");
+    Console.WriteLine("7. Update Nurse Information");
+    Console.WriteLine("8. Delete Nurse Information");
+    Console.WriteLine("9. Display record of all Nurse");
+    Console.WriteLine("10. Search record of a particular Nurse");
 
-        Console.WriteLine("11. Income of Staff");
-        Console.WriteLine("12  search doctor education");
-        Console.WriteLine("13  search by staff name ");
+    Console.WriteLine("--------------------------------------------------------");
 
-        Console.WriteLine("13  search by staff category and location");
+    Console.WriteLine("11. Income of Staff");
+    Console.WriteLine("12  search doctor education");
+    Console.WriteLine("13  search by staff name ");
 
 
     int choice = Convert.ToInt32(Console.ReadLine());
@@ -126,21 +124,11 @@ do
             Console.WriteLine("Enter ID of staff");
             doc.StaffId = Convert.ToInt32(Console.ReadLine());
 
-            foreach (var s in HospitalDbStore.GlobalStaffStore.Keys)
-            {
 
-
-                while (s == doc.StaffId)
-                {
-                    Console.WriteLine("Staff id already exist, please enter staff id again");
-                    doc.StaffId = Convert.ToInt32(Console.ReadLine());
-                }
-            }
-
-                    Console.WriteLine("Enter Name of staff");
+            Console.WriteLine("Enter Name of staff");
             doc.StaffName = Console.ReadLine();
 
-            
+
             Console.WriteLine("Enter Email of staff");
             doc.Email = Console.ReadLine();
             Console.WriteLine("Enter Department of staff");
@@ -156,12 +144,11 @@ do
             Console.WriteLine("Enter Specialization of staff");
             doc.Specilization = Console.ReadLine();
 
-            logic.RegisterStaff(doc);
+            // logic.RegisterStaff(doc);
+            abcde.Create(doc.StaffId, doc);
             //staffId++;
             Console.WriteLine("New Doctor Registered successfully");
             break;
-        //Console.WriteLine(Staff.StaffName);
-
 
         case 2:
             Console.WriteLine("Enter Staff Id for which you want to update the record");
@@ -172,43 +159,44 @@ do
             doc = new Doctor()
             {
                 StaffId = id,
-                StaffName = Console.ReadLine(),
-                Specilization = Console.ReadLine(),
+                //StaffName = Console.ReadLine(),
+                //Specilization = Console.ReadLine(),
                 Email = "Abcd@gmail.com",
                 DeptName = "Cancer",
                 Gender = "male",
                 StaffCategory = "Doctor",
-                ContactNo=123,
+                ContactNo = 123,
 
                 Education = "Bsc. Path",
                 //Specilization = Console.ReadLine(),
             };
 
-            var v = logic.UpdateStaffInfo(id, doc);
+            var v = abcde.Update(id, doc);
             Console.WriteLine("Record updated successfully");
 
 
             break;
+
         case 3:
             int id5;
             Console.WriteLine("Enter the id to delete ");
             id5 = Convert.ToInt32(Console.ReadLine());
-            logic.DeleteStaffInfo(id5);
+            abcde.Delete(id5);
             Console.WriteLine("Successfully deleted");
 
             break;
-        case 4:
 
+        case 4:
             foreach (var s in HospitalDbStore.GlobalStaffStore.Values)
             {
                 if (Convert.ToString(s.GetType()).Contains("Doctor"))
                 {
-                    var a = (Doctor)s;
-                    Console.WriteLine(s.StaffId + "    " + s.StaffName + "    " + s.Email + "      " + s.DeptName + "     " + s.Gender + "     " + s.StaffCategory + "       " + s.ContactNo + "       " + a.Education + "    " + a.Specilization);
+                    var ab = (Doctor)s;
+                    Console.WriteLine(ab.StaffId + "    " + s.StaffName + "    " + s.Email + "      " + s.DeptName + "     " + s.Gender + "     " + s.StaffCategory + "       " + s.ContactNo + "       " + ab.Education + "    " + ab.Specilization);
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
                 }
             }
-                break;
+            break;
         case 5:
             Console.WriteLine("Enter Staff Id for which you want to search the record");
             int id2 = Convert.ToInt32(Console.ReadLine());
@@ -218,12 +206,13 @@ do
                 if (s.Key == id2)
                 {
                     var a = (Doctor)s.Value;
-                    Console.WriteLine(s.Value.StaffId + "    " + s.Value.StaffName + "    " + s.Value.Email + "      " + s.Value.DeptName + "     " + s.Value.Gender +"     " + s.Value.StaffCategory + "       " + s.Value.ContactNo + "       " + a.Education + "    " + a.Specilization);
+                    Console.WriteLine(s.Value.StaffId + "    " + s.Value.StaffName + "    " + s.Value.Email + "      " + s.Value.DeptName + "     " + s.Value.Gender + "     " + s.Value.StaffCategory + "       " + s.Value.ContactNo + "       " + a.Education + "    " + a.Specilization);
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
                 }
 
             }
             break;
+
         case 6:
             Nurse Nur = new Nurse();
             Console.WriteLine("Enter ID of staff");
@@ -241,7 +230,7 @@ do
             }
             Console.WriteLine("Enter Name of staff");
             Nur.StaffName = Console.ReadLine();
-            
+
             Console.WriteLine("Enter staff email");
             Nur.Email = Console.ReadLine();
             Console.WriteLine("Enter Department of staff");
@@ -254,7 +243,7 @@ do
             Nur.Experience = Convert.ToInt32(Console.ReadLine());
 
 
-            logic.RegisterStaff(Nur);
+            Nurs.Create(Nur.StaffId, Nur);
             Console.WriteLine("New Nurse Registered successfully");
             break;
 
@@ -262,16 +251,16 @@ do
             Console.WriteLine("Enter Staff Id for which you want to update the record");
             int id1 = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Enter Name and experience of nurse to be updated");
+            Console.WriteLine("Enter Name of nurse to be updated");
 
             Nur = new Nurse()
             {
                 StaffId = id1,
-                StaffName = Console.ReadLine(),
-                Experience = Convert.ToInt32(Console.ReadLine())   
+                //StaffName = Console.ReadLine(),
+                //Experience = Convert.ToInt32(Console.ReadLine())
             };
 
-            logic.UpdateStaffInfo(id1, Nur);
+           Nurs.Update(id1, Nur);
 
             Console.WriteLine("Record updated successfully");
 
@@ -282,7 +271,7 @@ do
             int id6;
             Console.WriteLine("Enter the id to delete ");
             id6 = Convert.ToInt32(Console.ReadLine());
-            logic.DeleteStaffInfo(id6);
+            Nurs.Delete(id6);
             Console.WriteLine("Successfully deleted");
             break;
         case 9:
@@ -291,7 +280,7 @@ do
                 if (Convert.ToString(s.GetType()).Contains("Nurse"))
                 {
                     var a = (Nurse)s;
-                    Console.WriteLine(s.StaffId + "    " + s.StaffName + "    " + s.Email + "      " + s.DeptName + "     " + s.Gender + "     " + s.StaffCategory + "       " + s.ContactNo + "       " + a.Education );
+                    Console.WriteLine(s.StaffId + "    " + s.StaffName + "    " + s.Email + "      " + s.DeptName + "     " + s.Gender + "     " + s.StaffCategory + "       " + s.ContactNo + "       " + a.Experience);
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
                 }
             }
@@ -306,7 +295,7 @@ do
                 if (s.Value.StaffId == id3)
                 {
                     var a = (Nurse)s.Value;
-                    Console.WriteLine(s.Value.StaffId + "    " + s.Value.StaffName + "    " + s.Value.Email + "      " + s.Value.DeptName + "     " + s.Value.Gender + "     " + s.Value.StaffCategory  + "      " + a.Experience);
+                    Console.WriteLine(s.Value.StaffId + "    " + s.Value.StaffName + "    " + s.Value.Email + "      " + s.Value.DeptName + "     " + s.Value.Gender + "     " + s.Value.StaffCategory + "      " + a.Experience);
                 }
 
             }
@@ -323,8 +312,8 @@ do
                 //Console.Clear();
                 //if (s.Key == id11 && id11 >= 100 && id11 <= 200)
 
-                if(s.Key==id11 && s.Value.StaffCategory=="Doctor")
-                    
+                if (s.Key == id11 && s.Value.StaffCategory == "Doctor")
+
                 {
                     Doctor doc1 = new Doctor();
 
@@ -340,6 +329,8 @@ do
 
                     StaffLogicAbstract staffDoc = new DoctorLogicEx(id11, doc1.patientsDiagonsed, doc1.operationsPerDay);
 
+                    Accounts accounts = new Accounts();
+
                     Console.WriteLine("                     PAY SLIP                 ");
 
                     Console.WriteLine("===============================================================================================");
@@ -350,8 +341,8 @@ do
                     //Console.WriteLine(b);
                     //Console.WriteLine(c);
 
-                    Accounts accounts = new Accounts();
-               
+                   // Accounts accounts = new Accounts();
+
                     Console.WriteLine($"Total Income = {accounts.GetStaffTotalIncome(staffDoc)}");
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine($" ShareToHospital  = {accounts.GetShareToHospital(staffDoc)}");
@@ -362,6 +353,11 @@ do
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine($"Gross Income  = {accounts.GetGrossIncome(staffDoc)}");
                     Console.WriteLine("===============================================================================================");
+                    Console.WriteLine();
+
+                    //                    Console.WriteLine($"Net Income for {c} {b} with staff id {id11} = {accounts.GetStaffIncome(staffDoc)}");
+
+
                     Console.WriteLine();
                 }
 
@@ -381,6 +377,8 @@ do
                     StaffLogicAbstract staffNur = new NurseLogicEx(id11, N1.InjectionApplied, N1.PatientsMonitored);
 
                     Accounts accounts = new Accounts();
+
+                    // Console.WriteLine($"Net Income for {c} {b} with staff id {id11} = {accounts.GetStaffIncome(staffNur)}");
 
 
                     Console.WriteLine("                     PAY SLIP                 ");
@@ -405,112 +403,18 @@ do
 
                     Console.WriteLine($"Gross Income = {accounts.GetGrossIncome(staffNur)}");
                     Console.WriteLine();
+                    Console.WriteLine();
                     //break;
                 }
 
 
-               // else
-                 //   Console.WriteLine($"Staff id {id11} is not registered, please register it first");
+                // else
+                //   Console.WriteLine($"Staff id {id11} is not registered, please register it first");
             }
             break;
-        case 12:
-            Console.WriteLine("enter doctor Education to search");
-
-            string spl = Console.ReadLine();
-            logic = new DoctorLogic();
-            logic.searchdoctor(spl);
-           
-
-              //var abc = (Doctor)s.Value;
-            break;
-        case 13:
-            Console.WriteLine("enter staff name to search type of staff ");
-
-            string spl1 = Console.ReadLine();
-
-            foreach (var s1 in HospitalDbStore.GlobalStaffStore.Values)
-            {
-                if (s1.StaffName == spl1)
-                {
-                    Console.WriteLine(s1.StaffCategory);
-                }
-            }
-
-                break;
-
-        case 14:
-
-            Console.WriteLine("enter staff category to search");
-
-            string str8 = Console.ReadLine();
-
-            Console.WriteLine("enter location of staff to search");
-
-            string str9 = Console.ReadLine();
-            foreach (var s2 in HospitalDbStore.GlobalStaffStore.Values)
-            {
-                if(s2.StaffCategory == str8 && s2.Location == str9)
-               {
-                        if (Convert.ToString(s2.GetType()).Contains("Doctor"))
-                        {
-                            var a = (Doctor)s2;
-                            // Doctor abcd = new Doctor();
-                            Console.WriteLine(s2.StaffId + "    " + s2.StaffName + "    " + s2.Email + "      " + s2.DeptName + "     " + s2.Gender + "     " + s2.StaffCategory + "       " + s2.ContactNo + "       " + a.Education + "    " + a.Specilization);
-                            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-
-                         }
-                        else if (Convert.ToString(s2.GetType()).Contains("Nurse"))
-                        {
-                            var a = (Nurse)s2;
-                            // Doctor abcd = new Doctor();
-                            Console.WriteLine(s2.StaffId + "    " + s2.StaffName + "    " + s2.Email + "      " + s2.DeptName + "     " + s2.Gender + "     " + s2.StaffCategory + "       " + s2.ContactNo + "       " + a.Education + "    " + a.Experience);
-                            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-
-                        }
-
-                }
-
-            }
     
-          break;
-        
-
-    } //while (continueExecution == "y" || continueExecution == "Y") ;
-
-
-
-
-    // Console.ReadLine();
-
-} while (continueExecution == "y" || continueExecution == "Y");
-
-
-
-
-
-//Console.WriteLine(JsonSerializer.Serialize(Staffs));
-
-//Console.WriteLine("Statff are as below");
-//Console.WriteLine("Enter Staff Id for which you want to search the record");
-//int id = Convert.ToInt32(Console.ReadLine());
-
-
-// var Staffs = logic.GetStatffs();
-
-
-/*foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
-{
-    if(s.Value.StaffId==101)
-    {
-        var a = (Doctor)s.Value;
-        Console.WriteLine(s.Value.StaffId + "    " + s.Value.StaffName + "    " + "      " + "     " + a.Education + "    " + a.Specilization);
-        Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
     }
-   
-}*/
-
-
-
+    } while (continueExecution == "y" || continueExecution == "Y") ;
 
 
 

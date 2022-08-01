@@ -128,19 +128,19 @@ do
                         Console.WriteLine($"Word {arr[t]} appears {count} times");
                         break;
                     }
-                    else
-                    {
-                        Console.WriteLine($"Word {arr[t]} appears {count} times");
-                        break;
-                    }
+                    //else
+                    //{
+                    //    Console.WriteLine($"Word {arr[t]} appears {count} times");
+                    //    break;
+                    //}
 
 
                 }
             }
-            /*if (flag1 == 0)
+            if (flag1 == 0)
             {
                 Console.WriteLine("No repeated words");
-            }*/
+            }
 
             break;
 

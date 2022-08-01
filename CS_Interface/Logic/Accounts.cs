@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CS_Search.Logic;
-using CS_Search.Models;
-using CS_Search.Logic;
 
-namespace CS_Search.Logic
+
+namespace CS_Interface.Logic
 {
     public class Accounts
     {
@@ -34,7 +32,7 @@ namespace CS_Search.Logic
         {
             NetIncome = staff.CalculateIncome() - staff.ShareToHospital();
             return NetIncome;
-            
+
         }
 
         public decimal GetShareToHospital(StaffLogicAbstract staff)
@@ -46,14 +44,14 @@ namespace CS_Search.Logic
 
         public decimal GetTax(StaffLogicAbstract staff)
         {
-             Tax = NetIncome * Convert.ToDecimal(0.1);
+            Tax = NetIncome * Convert.ToDecimal(0.1);
             return Tax;
 
         }
 
         public decimal GetGrossIncome(StaffLogicAbstract staff)
         {
-             GrossIncome = NetIncome - Tax;
+            GrossIncome = NetIncome - Tax;
             return GrossIncome;
 
         }
