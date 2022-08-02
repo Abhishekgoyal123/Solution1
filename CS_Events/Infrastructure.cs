@@ -13,17 +13,23 @@ namespace CS_Events
 
     public class Notification
     {
+        int a = 5;
+
+        
+       
+
         public event NotificationEventHandler Registration;
         public event NotificationEventHandler Deletion;
         public void Register()
         {
-
+           
+            
             foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
             {
 
-            //    var a = (Doctor)s.Value;
-
-                if(s.Key == s.Value.StaffId)
+                //    var a = (Doctor)s.Value;
+                int b = HospitalDbStore.GlobalStaffStore.Count;
+                if (b>a)
 
                {
                     Registration();
@@ -62,9 +68,8 @@ namespace CS_Events
             foreach (var s in HospitalDbStore.GlobalStaffStore.Values)
             {
 
-                var a = (Doctor)s;
-
-                if (a.StaffId != s.StaffId)
+                int b = HospitalDbStore.GlobalStaffStore.Count;
+                if (b > a)
 
                 {
                     Deletion();
