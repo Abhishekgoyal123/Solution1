@@ -1,24 +1,90 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+    // strings at index 0 is not used, it is
+    // to make array indexing simple
+     string[] one = { "", "one ", "two ", "three ", "four ",
+                            "five ", "six ", "seven ", "eight ",
+                            "nine ", "ten ", "eleven ", "twelve ",
+                            "thirteen ", "fourteen ", "fifteen ",
+                            "sixteen ", "seventeen ", "eighteen ",
+                            "nineteen " };
 
-string[] arr = new string[] { "Mahesh", "Tejas", "Mukesh", "Satish", "Vivek", "Vinay", "Sandeep", "Nandu", "Anil", "Abhay", "Jaywant", "Shyam", "Tushar", "Sanjay", "Sharad", "Vijay", "Abhay", "Vilas" };
-Array.Sort(arr);
-for (int i = 0; i < arr.Length; i++)
-{
-    for (int k = i+1; k < arr.Length; k++)
+    // strings at index 0 and 1 are not used,
+    // they is to make array indexing simple
+     string[] ten = { "", "", "twenty ", "thirty ", "forty ",
+                            "fifty ", "sixty ", "seventy ", "eighty ",
+                            "ninety " };
+
+    // n is 1- or 2-digit number
+     string numToWords(int n, string s)
     {
-        if (arr[i].Length > arr[k].Length)
+        string str = "";
+
+        // if n is more than 19, divide it
+        if (n > 19)
         {
-            var temp = arr[i];
-            arr[i] = arr[k];
-            arr[k] = temp;
-
+            str += ten[n / 10] + one[n % 10];
         }
+        else
+        {
+            str += one[n];
+        }
+
+        // if n is non-zero
+        if (n != 0)
+        {
+            str += s;
+        }
+
+        return str;
     }
-}
 
+    // Function to print a given number in words
+     string convertToWords(long n)
+    {
 
+        // stores word representation of
+        // given number n
+        string out1 = "";
 
-for (int s=0;s<arr.Length;s++)
-{
-    Console.WriteLine(arr[s]);
-}
+        // handles digits at ten millions and
+        // hundred millions places (if any)
+        out1 += numToWords((int)(n / 10000000),
+                           "crore ");
+
+        // handles digits at hundred thousands
+        // and one millions places (if any)
+        out1 += numToWords((int)((n / 100000) % 100),
+                           "lakh ");
+
+        // handles digits at thousands and tens
+        // thousands places (if any)
+        out1 += numToWords((int)((n / 1000) % 100),
+                           "thousand ");
+
+        // handles digit at hundreds places (if any)
+        out1 += numToWords((int)((n / 100) % 10),
+                           "hundred ");
+
+        if (n > 100 && n % 100 > 0)
+        {
+            out1 += "and ";
+        }
+
+        // handles digits at ones and tens
+        // places (if any)
+        out1 += numToWords((int)(n % 100), "");
+
+        return out1;
+    }
+
+    // Driver code
+     void Main()
+    {
+        // long handles upto 9 digit no
+        // change to unsigned long long int to
+        // handle more digit number
+        long n = 4387764;
+
+        // convert given number in words
+        Console.WriteLine(convertToWords(n));
+    }

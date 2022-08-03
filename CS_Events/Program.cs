@@ -118,8 +118,8 @@ do
     {
         case 1:
 
-            Notification n1 = new Notification();
-            EventListener listener = new EventListener(n1);
+            //Notification n1 = new Notification();
+            //EventListener listener = new EventListener(n1);
 
             Doctor doc = new Doctor();
             Console.WriteLine("Enter ID of staff");
@@ -156,8 +156,11 @@ do
             doc.Specilization = Console.ReadLine();
 
             logic.RegisterStaff(doc);
+
+            Notification n1 = new Notification();
+            EventListener listener = new EventListener(n1);
             //staffId++;
-           // Console.WriteLine("New Doctor Registered successfully");
+            // Console.WriteLine("New Doctor Registered successfully");
             break;
         //Console.WriteLine(Staff.StaffName);
 

@@ -2,7 +2,9 @@
 
 Console.WriteLine("Hello, World!");
 
-
+ConvertToWords convertToWords = new ConvertToWords();
+//var bc = cc.convertToWords(21463);
+//Console.WriteLine(bc);
 
 StaffLogic logic = new DoctorLogic();
 
@@ -353,6 +355,8 @@ do
                     Accounts accounts = new Accounts();
                
                     Console.WriteLine($"Total Income = {accounts.GetStaffTotalIncome(staffDoc)}");
+                    //var abc= convertToWords.(accounts.GetStaffTotalIncome(staffDoc);
+                   Console.WriteLine(convertToWords.convertToWords(accounts.GetStaffTotalIncome(staffDoc)));
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine($" ShareToHospital  = {accounts.GetShareToHospital(staffDoc)}");
                     Console.WriteLine("===============================================================================================");

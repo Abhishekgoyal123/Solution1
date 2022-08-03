@@ -1,15 +1,104 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-string a = "The James Bond series focuses on a fictional British Secret Service agent created in 1953 by writer Ian Fleming, who featured him in twelve novels and two short-story collections. Since Fleming's death in 1964, eight other authors have written authorised Bond novels or novelisations: Kingsley Amis, Christopher Wood, John Gardner, Raymond Benson, Sebastian Faulks, Jeffery Deaver, William Boyd, and Anthony Horowitz. The latest novel is Forever and a Day by Anthony Horowitz, published in May 2018. Additionally Charlie Higson wrote a series on a young James Bond, and Kate Westbrook wrote three novels based on the diaries of a recurring series character, Moneypenny. The character—also known by the code number 007 (pronounced double-O-seven)—has also been adapted for television, radio, comic strip, video games and film. The films are one of the longest continually running film series and have grossed over US$7.04 billion in total, making it the fifth-highest-grossing film series to date, which started in 1962 with Dr. No, starring Sean Connery as Bond. As of 2021, there have been twenty-five films in the Eon Productions series. The most recent Bond film, No Time to Die (2021), stars Daniel Craig in his fifth portrayal of Bond; he is the sixth actor to play Bond in the Eon series. There have also been two independent productions of Bond films: Casino Royale (a 1967 spoof starring David Niven) and Never Say Never Again (a 1983 remake of an earlier Eon-produced film, 1965's Thunderball, both starring Connery). In 2015, the series was estimated to be worth $19.9 billion,[1] making James Bond one of the highest-grossing media franchises of all time.";
-char [] charArray = a.ToCharArray();
-for (int r = 0; r < a.Length; r++)
-{   
-   
-    if (a[r] == ' ')
-        charArray[r+1] = char.ToUpper(a[r+1]);
-}
-Console.WriteLine(charArray);
+/* C# program to print a given number in words.
+The program handles till 9 digits numbers and
+can be easily extended to 20 digit number */
 
+class GFG
+{
+
+	// strings at index 0 is not used, it is
+	// to make array indexing simple
+	static string[] one = { "", "one ", "two ", "three ", "four ",
+							"five ", "six ", "seven ", "eight ",
+							"nine ", "ten ", "eleven ", "twelve ",
+							"thirteen ", "fourteen ", "fifteen ",
+							"sixteen ", "seventeen ", "eighteen ",
+							"nineteen " };
+
+	// strings at index 0 and 1 are not used,
+	// they is to make array indexing simple
+	static string[] ten = { "", "", "twenty ", "thirty ", "forty ",
+							"fifty ", "sixty ", "seventy ", "eighty ",
+							"ninety " };
+
+	// n is 1- or 2-digit number
+	static string numToWords(int n, string s)
+	{
+		string str = "";
+
+		// if n is more than 19, divide it
+		if (n > 19)
+		{
+			str += ten[n / 10] + one[n % 10];
+		}
+		else
+		{
+			str += one[n];
+		}
+
+		// if n is non-zero
+		if (n != 0)
+		{
+			str += s;
+		}
+
+		return str;
+	}
+
+	// Function to print a given number in words
+	static string convertToWords(long n)
+	{
+
+		// stores word representation of
+		// given number n
+		string out1 = "";
+
+		// handles digits at ten millions and
+		// hundred millions places (if any)
+		out1 += numToWords((int)(n / 10000000),
+						"crore ");
+
+		// handles digits at hundred thousands
+		// and one millions places (if any)
+		out1 += numToWords((int)((n / 100000) % 100),
+						"lakh ");
+
+		// handles digits at thousands and tens
+		// thousands places (if any)
+		out1 += numToWords((int)((n / 1000) % 100),
+						"thousand ");
+
+		// handles digit at hundreds places (if any)
+		out1 += numToWords((int)((n / 100) % 10),
+						"hundred ");
+
+		if (n > 100 && n % 100 > 0)
+		{
+			out1 += "and ";
+		}
+
+		// handles digits at ones and tens
+		// places (if any)
+		out1 += numToWords((int)(n % 100), "");
+
+		return out1;
+	}
+
+	// Driver code
+	static void Main()
+	{
+		// long handles upto 9 digit no
+		// change to unsigned long long int to
+		// handle more digit number
+		long n = 438237764;
+
+		// convert given number in words
+		Console.WriteLine(convertToWords(n));
+	}
+}
+
+// This code is contributed by mits
 
 
 
