@@ -4,8 +4,9 @@ using CS_Events;
 StaffLogic logic = new DoctorLogic();
 Console.WriteLine("Hello, World!");
 
-//Notification n1 = new Notification();
-//EventListener listener = new EventListener(n1);
+//Notification n1 = new Notification
+DoctorLogic obj = new DoctorLogic();
+EventListener listener = new EventListener(obj);
 
 
 Doctor d1 = new Doctor()
@@ -57,35 +58,35 @@ logic.RegisterStaff(d3);
 
 
 //logic = new NurseLogic();
-Nurse n3 = new Nurse()
-{
-    StaffId = 201,
-    StaffName = "Mr. Bee",
-    StaffCategory = "Nurse",
-    Education = "xyz",
-    Experience = 10,
-    Email = "Abcd@gmail.com",
-    DeptName = "Cancer",
-    Gender = "female",
-    ContactNo = 123,
-};
+//Nurse n3 = new Nurse()
+//{
+//    StaffId = 201,
+//    StaffName = "Mr. Bee",
+//    StaffCategory = "Nurse",
+//    Education = "xyz",
+//    Experience = 10,
+//    Email = "Abcd@gmail.com",
+//    DeptName = "Cancer",
+//    Gender = "female",
+//    ContactNo = 123,
+//};
 
-logic.RegisterStaff(n3);
+//logic.RegisterStaff(n3);
 
-Nurse n2 = new Nurse()
-{
-    StaffId = 202,
-    StaffName = "Neha",
-    StaffCategory = "Nurse",
-    Education = "xyz",
-    Experience = 10,
-    Email = "Abcd@gmail.com",
-    DeptName = "Heart",
-    Gender = "female",
-    ContactNo = 123,
-};
+//Nurse n2 = new Nurse()
+//{
+//    StaffId = 202,
+//    StaffName = "Neha",
+//    StaffCategory = "Nurse",
+//    Education = "xyz",
+//    Experience = 10,
+//    Email = "Abcd@gmail.com",
+//    DeptName = "Heart",
+//    Gender = "female",
+//    ContactNo = 123,
+//};
 
-logic.RegisterStaff(n2);
+//logic.RegisterStaff(n2);
 
 
 string continueExecution = "y";
@@ -157,9 +158,9 @@ do
 
             logic.RegisterStaff(doc);
 
-            Notification n1 = new Notification();
-            EventListener listener = new EventListener(n1);
-            //staffId++;
+            //Notification n1 = new Notification();
+            //EventListener listener = new EventListener(n1);
+            ////staffId++;
             // Console.WriteLine("New Doctor Registered successfully");
             break;
         //Console.WriteLine(Staff.StaffName);

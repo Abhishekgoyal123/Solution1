@@ -61,7 +61,22 @@ foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
 
         StaffLogicAbstract staffDoc = new DoctorLogicEx(id11, doc1.patientsDiagonsed, doc1.operationsPerDay);
 
-        
+        FileOperation operation = new FileOperation();
+        Accounts accounts = new Accounts();
+
+        Console.WriteLine("enter file name ");
+        string filename = Console.ReadLine();
+
+        string path = $@"C:\StaffIncome";
+
+        operation.CreateFile(path, filename);
+
+        string[] data = new string[] { $"{accounts.GetStaffTotalIncome(staffDoc)}", "b" };
+
+        operation.WriteFileIncome(path, filename, data);
+
+
+
         Console.WriteLine("                     PAY SLIP                 ");
 
         Console.WriteLine("===============================================================================================");
@@ -72,7 +87,7 @@ foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
         //Console.WriteLine(b);
         //Console.WriteLine(c);
 
-        Accounts accounts = new Accounts();
+      //  Accounts accounts = new Accounts();
 
         Console.WriteLine($"Total Income = {accounts.GetStaffTotalIncome(staffDoc)}");
         //var abc= convertToWords.(accounts.GetStaffTotalIncome(staffDoc);

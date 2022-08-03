@@ -110,8 +110,7 @@ do
     Console.WriteLine("--------------------------------------------------------");
 
     Console.WriteLine("11. Income of Staff");
-    Console.WriteLine("12  search doctor education");
-    Console.WriteLine("13  search by staff name ");
+   
 
 
     int choice = Convert.ToInt32(Console.ReadLine());
