@@ -3,8 +3,7 @@
 Console.WriteLine("Hello, World!");
 
 ConvertToWords convertToWords = new ConvertToWords();
-//var bc = cc.convertToWords(21463);
-//Console.WriteLine(bc);
+
 
 StaffLogic logic = new DoctorLogic();
 

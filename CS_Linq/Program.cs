@@ -110,19 +110,6 @@ var Empdetails = (from emp in employees
                   }); // COnvert the result into List
 
 
-
-
-//foreach (var item in Empdetails)
-//{
-//    Console.WriteLine(item.DeptName);
-//    foreach (var s in item.val)
-//    {
-//        Console.WriteLine($" EmpNo = {s.EmpNo}  Emp Name = {s.EmpName} DeptName = {item.DeptName} and Salary = {s.Salary} ");
-//       // break;
-//    }
-   
-//}
-
 foreach(var items in Empdetails)
 {
     foreach(var s in items.val)

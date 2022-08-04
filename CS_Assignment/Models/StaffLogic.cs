@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CS_Events;
 
+using CS_Assignment.Entities;
+using CS_Assignment.Models;
+//using CS_FirstFilLogic;
+using CS_Assignment.Database;
 
-namespace CS_Events
+namespace CS_Assignment.Models
 {
-    public delegate void NotificationEventHandler();
-
-
     public abstract class StaffLogic
     {
         public abstract void RegisterStaff(Staff statff);
@@ -20,9 +20,6 @@ namespace CS_Events
         public abstract Dictionary<int, Staff> DeleteStaffInfo(int id);
 
         public abstract void searchdoctor(string str);
-
-       // public event NotificationEventHandler Registration;
-
 
         //public abstract void searchByName(string str);
 
@@ -36,22 +33,18 @@ namespace CS_Events
 
     public class DoctorLogic : StaffLogic
     {
-        public event NotificationEventHandler Registration;
 
+        
         public override void RegisterStaff(Staff statff)
         {
             if (HospitalDbStore.GlobalStaffStore != null)
             {
                 HospitalDbStore.GlobalStaffStore.Add(statff.StaffId, statff);
-               
-                Registration();
-
             }
         }
         public override Dictionary<int, Staff> GetStatffs()
         {
             return HospitalDbStore.GlobalStaffStore;
-
         }
         public override Dictionary<int, Staff> UpdateStaffInfo(int id, Staff staff)
         {
@@ -60,8 +53,6 @@ namespace CS_Events
                 if (s.Key == id)
                 {
                     var a = (Doctor)s.Value;
-
-
                     a.StaffName = staff.StaffName;
                     Doctor st = (Doctor)staff;
                     a.Specilization = st.Specilization;
@@ -122,120 +113,114 @@ namespace CS_Events
             }
         }
 
-      
+        //public override void searchByName(string str)
+        //{
+        //    string str1 = String.Empty;
+        //    foreach (var s1 in HospitalDbStore.GlobalStaffStore.Values)
+        //    {
+                
+        //            //var a = (Doctor)s1;
+        //            // Doctor abcd = new Doctor();
+        //            if (s1.StaffName == str)
+        //            {
+        //                Console.WriteLine(s1.StaffCategory);
+
+        //            }
+
+        //    }
+        //}
 
 
     }
 
 
+    }
 
 
+        public class NurseLogic : StaffLogic
+        {
+        
 
-    public class NurseLogic : StaffLogic
-    {
-
+       
         public override void RegisterStaff(Staff statff)
-        {
-            if (HospitalDbStore.GlobalStaffStore != null)
             {
-                HospitalDbStore.GlobalStaffStore.Add(statff.StaffId, statff);
-            }
-        }
-        public override Dictionary<int, Staff> GetStatffs()
-        {
-            return HospitalDbStore.GlobalStaffStore;
-        }
-
-        public override Dictionary<int, Staff> UpdateStaffInfo(int id, Staff staff)
-        {
-            foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
-            {
-                if (s.Key == id)
+                if (HospitalDbStore.GlobalStaffStore != null)
                 {
-                    Nurse x = (Nurse)staff;
-                    x.StaffName = staff.StaffName;
-                    Nurse y = (Nurse)staff;
-                    x.Experience = y.Experience;
-
-                    //s.Value.Email = doc.Email;
+                    HospitalDbStore.GlobalStaffStore.Add(statff.StaffId, statff);
                 }
-                //else
-                //{
-                //    Console.WriteLine("Record Not Found");
-                //}
-
             }
-            return HospitalDbStore.GlobalStaffStore;
-
-        }
-
-        public override Dictionary<int, Staff> DeleteStaffInfo(int id)
-        {
-
-            //Doctor searchedStaff;
-            // Logic for Delete
-            // 1. Serach the object
-            //Doctor searchedStaff ;
-            foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
+            public override Dictionary<int, Staff> GetStatffs()
             {
-                if (s.Key == id)
-                {
-                    HospitalDbStore.GlobalStaffStore.Remove(id);
-                    break;
-                }
-                // Dr_Dict.Remove(searchedStaff);
+                return HospitalDbStore.GlobalStaffStore;
             }
 
-            // 2. Delete
-            // HospitalDbStore.GlobalStaffStore.Remove(id, out searchedStaff);
-            //Console.WriteLine("Record deleted succesfully");
-
-            return HospitalDbStore.GlobalStaffStore;
-        }
-
-        public override void searchdoctor(string str)
-        {
-            string str1 = String.Empty;
-            foreach (var s1 in HospitalDbStore.GlobalStaffStore.Values)
+            public override Dictionary<int, Staff> UpdateStaffInfo(int id, Staff staff)
             {
-                if (Convert.ToString(s1.GetType()).Contains("Nurse"))
+                foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
                 {
-                    var a = (Nurse)s1;
-                    // Doctor abcd = new Doctor();
-                    if (a.Education == str)
+                    if (s.Key == id)
                     {
-                        Console.WriteLine(a.StaffName);
+                        Nurse x = (Nurse)staff;
+                        x.StaffName = staff.StaffName;
+                        Nurse y = (Nurse)staff;
+                        x.Experience = y.Experience;
 
+                        //s.Value.Email = doc.Email;
                     }
+                    //else
+                    //{
+                    //    Console.WriteLine("Record Not Found");
+                    //}
+
+                }
+                return HospitalDbStore.GlobalStaffStore;
+
+            }
+
+    public override Dictionary<int, Staff> DeleteStaffInfo(int id)
+    {
+
+        //Doctor searchedStaff;
+        // Logic for Delete
+        // 1. Serach the object
+        //Doctor searchedStaff ;
+        foreach (KeyValuePair<int, Staff> s in HospitalDbStore.GlobalStaffStore)
+        {
+            if (s.Key == id)
+            {
+                HospitalDbStore.GlobalStaffStore.Remove(id);
+                break;
+            }
+            // Dr_Dict.Remove(searchedStaff);
+        }
+
+        // 2. Delete
+        // HospitalDbStore.GlobalStaffStore.Remove(id, out searchedStaff);
+        //Console.WriteLine("Record deleted succesfully");
+
+        return HospitalDbStore.GlobalStaffStore;
+    }
+
+    public override void searchdoctor(string str)
+        {
+        string str1 = String.Empty;
+        foreach (var s1 in HospitalDbStore.GlobalStaffStore.Values)
+        {
+            if (Convert.ToString(s1.GetType()).Contains("Nurse"))
+            {
+                var a = (Nurse)s1;
+                // Doctor abcd = new Doctor();
+                if (a.Education == str)
+                {
+                    Console.WriteLine(a.StaffName);
 
                 }
 
             }
-        }
 
-    }
-    public class EventListener
-    {
-        private DoctorLogic obj;
-
-        public EventListener(DoctorLogic obj)
-        {
-            this.obj = obj;
-            obj.Registration += obj_Registration;
-            //n.Deletion += n_Deletion;
-        }
-
-        private void obj_Registration()
-        {
-            Console.WriteLine("Registration sucessfull");
-        }
-
-        private void n_Deletion()
-        {
-            Console.WriteLine("Deletion sucessfull");
         }
     }
-}
+    }
 
 
 

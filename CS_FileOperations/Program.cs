@@ -18,6 +18,8 @@ try
 
     operation.CreateFile(path, filename);
 
+    operation.WriteFile(path, filename, "The FIrst File CReated using the File Class");
+
     //string[] data = new string[] { "a", "b" };
 
     //operation.WriteFileIncome(path, filename, data);

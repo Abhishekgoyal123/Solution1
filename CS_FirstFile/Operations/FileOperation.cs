@@ -57,7 +57,8 @@ namespace CS_FirstFile.Operations
                 {
                     throw new Exception("File Name Cannot be Empty");
                 }
-                File.WriteAllLines(filename, contents);
+                string file = $"{path} {filename}.txt";
+                File.WriteAllLines(file, contents);
                 Console.WriteLine("Contents are written to the File");
             }
             catch (Exception ex)

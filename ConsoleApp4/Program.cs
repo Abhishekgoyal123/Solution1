@@ -6,7 +6,7 @@ String[] a = { "Zero ", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Sev
 
 String[] b = {"Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ", "Eighteen ", "Nineteen " };
 
-String[] c = { "Zero ", "Ten ", "Twenty ", "Thirty ", "Forty ","Fifty ", "Sixty ", "Seventy ", "Eighty ", "Ninety " , "Hundred" };
+String[] c = { "", "", "Twenty ", "Thirty ", "Forty ","Fifty ", "Sixty ", "Seventy ", "Eighty ", "Ninety " , "Hundred" };
 
 
 

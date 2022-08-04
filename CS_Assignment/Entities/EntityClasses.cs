@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CS_FirstFile.Entities;
+using CS_Assignment.Entities;
+using CS_Assignment.Models;
 
-
-namespace CS_FirstFile.Entities
+namespace CS_Assignment.Entities
 {
     public class Staff
     {
