@@ -92,6 +92,41 @@ string[] abc = new string[] { $"{doc1.StaffId}, {doc1.StaffName}, {doc1.Email}, 
     $" { n8.StaffId }, {n8.StaffName}, {n8.Email}, {n8.DeptName}, {n8.StaffCategory}, {n8.ContactNo}, {n8.Experience} ," +"\n"};
 
 
+
+
+//Console.WriteLine("enter staff category to search");
+
+//string str8 = Console.ReadLine();
+
+//Console.WriteLine("enter location of staff to search");
+
+//string str9 = Console.ReadLine();
+//foreach (var s2 in HospitalDbStore.GlobalStaffStore.Values)
+//{
+//    if (s2.StaffCategory == str8 && s2.Location == str9)
+//    {
+//        if (Convert.ToString(s2.GetType()).Contains("Doctor"))
+//        {
+//            var a = (Doctor)s2;
+//            // Doctor abcd = new Doctor();
+//            Console.WriteLine(s2.StaffId + "    " + s2.StaffName + "    " + s2.Email + "      " + s2.DeptName + "     " + s2.Gender + "     " + s2.StaffCategory + "       " + s2.ContactNo + "       " + a.Education + "    " + a.Specilization);
+////            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+
+//        }
+//        else if (Convert.ToString(s2.GetType()).Contains("Nurse"))
+//        {
+//            var a = (Nurse)s2;
+//            // Doctor abcd = new Doctor();
+//            Console.WriteLine(s2.StaffId + "    " + s2.StaffName + "    " + s2.Email + "      " + s2.DeptName + "     " + s2.Gender + "     " + s2.StaffCategory + "       " + s2.ContactNo + "       " + a.Education + "    " + a.Experience);
+//            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+
+//        }
+
+//    }
+
+//}
+
+
 try
 {
 
@@ -101,6 +136,21 @@ try
    // string str = operation.ReadFile();
 
     operation.WriteFile(abc);
+    List<string> lines = new List<string>();
+    string str = operation.ReadFile();
+
+    while (str!= null)
+    {
+        lines.Add(str);
+    }
+
+    foreach (string value in lines)
+    {
+        Console.WriteLine(value);
+    }
+    //string str = operation.ReadFile();
+    //Console.WriteLine(str);
+
 }
 catch (Exception ex)
 {

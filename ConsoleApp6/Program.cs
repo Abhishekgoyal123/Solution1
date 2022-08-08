@@ -1,25 +1,22 @@
-﻿using System;
-using System.Diagnostics;
-EventLog eventLog = new EventLog();
-
-eventLog.Source = "NewSource";
-class MySample
+﻿namespace ConsoleApp6
 {
+    public delegate void abc(int a, int b);
 
-    EventLog eventLog = new EventLog();
-
-    eventLog.Source ="NewSource";
-    public static void Main()
+    public class xyz
     {
-        EventLog[] remoteEventLogs;
-
-        remoteEventLogs = EventLog.GetEventLogs("myServer");
-
-        Console.WriteLine("Number of logs on computer: " + remoteEventLogs.Length);
-
-        foreach (EventLog log in remoteEventLogs)
+        public static void Main()
         {
-            Console.WriteLine("Log: " + log.Log);
+            void add(int q, int z)
+            {
+                Console.WriteLine((q + z));
+            }
+
+            abc abcd = new abc(add);
+
+            abcd(100, 50);
         }
+
+
+
     }
 }

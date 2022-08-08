@@ -41,6 +41,7 @@ namespace CS_Assignment
                     StreamWriter sw = new StreamWriter(fs);
                     //contents = new string[] {"abc" , "wdf" }; 
                     sw.Write(s);
+                    
                     sw.Close();
                     sw.Dispose();
                 }
@@ -59,11 +60,12 @@ namespace CS_Assignment
             {
                 fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
                 StreamReader sr = new StreamReader(fs);
-                char[] buffer = new char[1024];
-                int res = sr.ReadBlock(buffer, 0, 6);
+                //char[] buffer = new char[1024];
+                str = sr.ReadLine();
                 sr.Close();
+                
                 sr.Dispose();
-                Console.WriteLine(buffer);
+                // Console.WriteLine(str);
             }
             catch (Exception ex)
             {
@@ -72,11 +74,24 @@ namespace CS_Assignment
             return str;
         }
 
+        public void MakeCopy(string srcFileName, string destFileName)
+        {
+            if (srcFileName == string.Empty || destFileName == string.Empty)
+            {
+                throw new Exception("Source File Name or Destination File NAme Cannot be Empty");
+            }
+            File.Copy(srcFileName, destFileName);
+            //File.Getf
+            
+           // fs.CopyTo(filePath);
+        }
 
         public void Dispose()
         {
             fs.Dispose();
             GC.SuppressFinalize(this);
         }
+
+
     }
 }
