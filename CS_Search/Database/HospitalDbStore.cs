@@ -10,6 +10,7 @@ namespace CS_Search.Database
 {
     public class HospitalDbStore
     {
+
         /// <summary>
         /// Global Store
         /// </summary>

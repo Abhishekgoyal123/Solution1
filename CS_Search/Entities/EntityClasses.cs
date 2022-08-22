@@ -33,8 +33,8 @@ namespace CS_Search.Entities
         public string StaffName { get; set; }
 
 
-        
-        
+        //public int abcd { get; set; }
+
         public string Email { get; set; } = string.Empty;
 
         public string Location { get; set; } = string.Empty;

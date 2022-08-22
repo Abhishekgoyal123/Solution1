@@ -7,6 +7,8 @@ ConvertToWords convertToWords = new ConvertToWords();
 
 StaffLogic logic = new DoctorLogic();
 
+
+
 Doctor d1 = new Doctor()
 
 {
@@ -335,7 +337,7 @@ do
                     doc1.operationsPerDay = Convert.ToInt32(Console.ReadLine());
 
                     Doctor st = (Doctor)s.Value;
-                    int a = st.StaffId;
+                    int a = s.Value.StaffId;
                     string b = st.StaffName;
                     string c = st.StaffCategory;
 

@@ -86,25 +86,25 @@ namespace CS_FirstFile.Operations
         //    }
         //}
 
-        //public string ReadFile(string path, string fileName)
-        //{
-        //    try
-        //    {
-        //        string contents = string.Empty;
-        //        if (fileName == string.Empty)
-        //        {
-        //            throw new Exception("File Name Cannot be Empty");
-        //        }
+        public string ReadFile(string path, string fileName)
+        {
+            try
+            {
+                string contents = string.Empty;
+                if (fileName == string.Empty)
+                {
+                    throw new Exception("File Name Cannot be Empty");
+                }
 
-        //        string file = $"{path} {fileName}.txt";
-        //        contents = File.ReadAllText(file);
-        //        return contents;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+                string file = $"{path} {fileName}.txt";
+                contents = File.ReadAllText(file);
+                return contents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         //public void AppendFile(string path, string filename, string contents)
         //{

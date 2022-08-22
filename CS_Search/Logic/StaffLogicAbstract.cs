@@ -25,9 +25,11 @@ namespace CS_Search.Logic
         }
         public abstract decimal ShareToHospital();
 
+        
+        
         //public abstract decimal Tax();
-    
-}
+
+        }
     
 
     public class DoctorLogicEx : StaffLogicAbstract
@@ -41,7 +43,7 @@ namespace CS_Search.Logic
         {
             return BasicPay = 10000;
         }
-
+        
         public DoctorLogicEx(int id, int patientsDiagonsed, int operationsPerDay)
         {
             PatientsDiagonsed = patientsDiagonsed;
@@ -61,8 +63,9 @@ namespace CS_Search.Logic
             decimal patientsFessReceived = PatientsDiagonsed * 30 * 500;
             
             // Call BAse CLass Implementation to ger return value
-            TotalIncome = CalculateBasicPay() + operationFees + patientsFessReceived;
+            TotalIncome = (CalculateBasicPay() *(Convert.ToDecimal(0.1))) + operationFees + patientsFessReceived;
             return TotalIncome;
+            
            
         }
         public override decimal ShareToHospital()

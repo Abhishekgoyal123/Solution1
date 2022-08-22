@@ -3,6 +3,8 @@ using CS_Assignment.Database;
 using CS_Assignment.Entities;
 using CS_Assignment.Models;
 
+
+
 Console.WriteLine("Hello, World!");
 
 FileStreamOperation operation = new FileStreamOperation();
@@ -34,10 +36,7 @@ StaffLogic logic = new DoctorLogic();
 
 //logic.RegisterStaff(doc);
 //staffId++;
-Console.WriteLine("New Doctor Registered successfully");
-
-
-
+//Console.WriteLine("New Doctor Registered successfully");
 
 
 Doctor doc1 = new Doctor() { StaffId = 1, StaffName = "Divyansh", Email = "divyansh@Movie.com", ContactNo = 998899, Education = "M.B.B.S", DeptName = "Cancer", StaffCategory = "doctor", Location = "pune", Specilization = "cancer" };
@@ -132,24 +131,49 @@ try
 
     operation.CreateFile();
 
-    // operation.WriteFile("I am from Stream");
+    
    // string str = operation.ReadFile();
 
     operation.WriteFile(abc);
-    List<string> lines = new List<string>();
-    string str = operation.ReadFile();
-
-    while (str!= null)
-    {
-        lines.Add(str);
-    }
-
-    foreach (string value in lines)
-    {
-        Console.WriteLine(value);
-    }
+    //List<string> lines = new List<string>();
     //string str = operation.ReadFile();
+
+    //while (str != null)
+    //{
+    //    lines.Add(str);
+    //}
+
+    //foreach (string value in lines)
+    //{
+    //    Console.WriteLine(value);
+    //}
+    Console.WriteLine("enter staff category to search");
+    string category = Console.ReadLine();
+    operation.ReadFileByCategory(category);
+
+    Console.WriteLine("enter staff id to search");
+    int id = Convert.ToInt32(Console.ReadLine());
+    operation.ReadFileByID(id);
     //Console.WriteLine(str);
+
+    Console.WriteLine("enter count of staff to search");
+    int count = Convert.ToInt32(Console.ReadLine());
+    operation.ReadRecordsByCount(count);
+   // operation.FileDetails();
+    // Console.WriteLine(a1);
+
+    Console.WriteLine("enter staff id to delete");
+    int id1 = Convert.ToInt32(Console.ReadLine());
+    operation.DeleteStaffById(id1);
+
+    //Console.WriteLine("enter staff id to update");
+    //int id2 = Convert.ToInt32(Console.ReadLine());
+
+    //Console.WriteLine("enter staff parameter to update");
+    //int id2 = Convert.ToInt32(Console.ReadLine());
+    //operation.UpdateStaffById(id2);
+
+    operation.DirectoryInfo();
 
 }
 catch (Exception ex)
