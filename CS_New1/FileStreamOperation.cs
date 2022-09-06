@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text;
 using System.Drawing;
+using CS_New1;
+using CS_New1.Database;
+using CS_New1.Entities;
+using CS_New1.Models;
 
-namespace CS_Assignment
+namespace CS_New1
 {
     
     public class FileStreamOperation : IDisposable
@@ -17,7 +21,7 @@ namespace CS_Assignment
         string filePath = string.Empty;
         public FileStreamOperation()
         {
-            filePath = @"C:\Assignment\MyFile.txt";
+            filePath = @"C:\Assignment\File.txt";
         }
         
         public void CreateFile()
@@ -35,18 +39,41 @@ namespace CS_Assignment
                 throw ex;
             }
         }
-
-        public void WriteFile(string[] contents)
+        List<Doctor> l1 = new List<Doctor>();
+        public void WriteFile(List<Doctor> l1)
         {
-            foreach (var item in contents)
+            foreach (var item in l1)
             {
-                string s = item;
+                  var s = item;
+                
                 try
                 {
-                    fs = new FileStream(filePath, FileMode.Open, FileAccess.Write);
+                    fs = new FileStream(filePath, FileMode.Append, FileAccess.Write);
                     StreamWriter sw = new StreamWriter(fs);
                     //contents = new string[] {"abc" , "wdf" }; 
-                    sw.Write(s);
+                    sw.Write(item.StaffId);
+                    sw.Write("");
+                    sw.Write(item.StaffName);
+                    sw.Write("");
+                    sw.Write("");
+                    sw.Write(item.Email);
+                    sw.Write("");
+                    sw.Write(item.ContactNo);
+                    sw.Write("");
+                    sw.Write(item.Education);
+                    sw.Write("");
+                    sw.Write(item.DeptName);
+                    sw.Write("");
+                    sw.Write(item.StaffCategory);
+                    sw.Write("");
+                    sw.Write(item.Location);
+                    sw.Write("");
+                    sw.Write(item.Specilization);
+                    sw.Write(Environment.NewLine);
+
+
+
+
                     sw.Close();
                     sw.Dispose();
                 }
@@ -71,6 +98,7 @@ namespace CS_Assignment
 
                 while ((ln = sr.ReadLine()) != null)
                 {
+                    
                     if(ln.Contains(category))
                     {
                         Console.WriteLine(ln);

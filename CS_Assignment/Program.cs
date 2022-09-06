@@ -12,6 +12,7 @@ FileStreamOperation operation = new FileStreamOperation();
 
 StaffLogic logic = new DoctorLogic();
 
+
 //Doctor doc = new Doctor();
 
 ////string[] abc = new string[] { $"{doc.StaffId}" };
@@ -70,7 +71,7 @@ logic.RegisterStaff(n6);
 Nurse n7 = new Nurse() { StaffId = 15, StaffName = "khushi", Email = "khushi@Movie.com", DeptName = "dental",ContactNo = 9988799, StaffCategory = "nurse", Location = "delhi", Experience = 10,  };
 logic.RegisterStaff(n7);
 Nurse n8 = new Nurse() { StaffId = 16, StaffName = "sonal", Email = "sonal@Movie.com", DeptName = "dental", ContactNo = 9988989, StaffCategory = "nurse", Location = "pune", Experience = 10,  };
-logic.RegisterStaff(n8);
+//logic.RegisterStaff(n8);
 
 //string[] abc = new string[] { $"{doc.StaffId}, { doc.StaffName }, {doc.Email}, {doc.DeptName}, {doc.Gender}, {doc.StaffCategory}, {doc.Education}, {doc.ContactNo}, {doc.Specilization}" };
 string[] abc = new string[] { $"{doc1.StaffId}, {doc1.StaffName}, {doc1.Email}, {doc1.DeptName}, {doc1.Gender}, {doc1.StaffCategory}, {doc1.Education}, {doc1.ContactNo}, {doc1.Specilization} ," +"\n"+
@@ -92,40 +93,6 @@ string[] abc = new string[] { $"{doc1.StaffId}, {doc1.StaffName}, {doc1.Email}, 
 
 
 
-
-//Console.WriteLine("enter staff category to search");
-
-//string str8 = Console.ReadLine();
-
-//Console.WriteLine("enter location of staff to search");
-
-//string str9 = Console.ReadLine();
-//foreach (var s2 in HospitalDbStore.GlobalStaffStore.Values)
-//{
-//    if (s2.StaffCategory == str8 && s2.Location == str9)
-//    {
-//        if (Convert.ToString(s2.GetType()).Contains("Doctor"))
-//        {
-//            var a = (Doctor)s2;
-//            // Doctor abcd = new Doctor();
-//            Console.WriteLine(s2.StaffId + "    " + s2.StaffName + "    " + s2.Email + "      " + s2.DeptName + "     " + s2.Gender + "     " + s2.StaffCategory + "       " + s2.ContactNo + "       " + a.Education + "    " + a.Specilization);
-////            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-
-//        }
-//        else if (Convert.ToString(s2.GetType()).Contains("Nurse"))
-//        {
-//            var a = (Nurse)s2;
-//            // Doctor abcd = new Doctor();
-//            Console.WriteLine(s2.StaffId + "    " + s2.StaffName + "    " + s2.Email + "      " + s2.DeptName + "     " + s2.Gender + "     " + s2.StaffCategory + "       " + s2.ContactNo + "       " + a.Education + "    " + a.Experience);
-//            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-
-//        }
-
-//    }
-
-//}
-
-
 try
 {
 
@@ -135,7 +102,7 @@ try
    // string str = operation.ReadFile();
 
     operation.WriteFile(abc);
-    //List<string> lines = new List<string>();
+   
     //string str = operation.ReadFile();
 
     //while (str != null)
@@ -166,14 +133,40 @@ try
     int id1 = Convert.ToInt32(Console.ReadLine());
     operation.DeleteStaffById(id1);
 
-    //Console.WriteLine("enter staff id to update");
-    //int id2 = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("enter staff id to update");
+    int id2 = Convert.ToInt32(Console.ReadLine());
 
-    //Console.WriteLine("enter staff parameter to update");
+    Console.WriteLine("enter staff parameter to update");
     //int id2 = Convert.ToInt32(Console.ReadLine());
-    //operation.UpdateStaffById(id2);
+    string parameter = Console.ReadLine();
+
+    //string xyz = $"{doc.id2}.{parameter}" +
+    //    $"";
+
+     string xyz = $"{"doc"}{id2}.{parameter}";
+    for (int i = 0; i < abc.Length; i++)
+    {
+        if (abc[i] == xyz)
+        {
+            Console.WriteLine("yes");
+        }
+    }
+
+   
+       //string n= "{" +doc.StaffName;
+    //Console.WriteLine(xyz);
+    //Console.WriteLine(n);
+
+    Console.WriteLine("enter staff parameter value to update");
+    //int id2 = Convert.ToInt32(Console.ReadLine());
+    string value = Console.ReadLine();
+
+    string xyz1 = doc1.StaffName;
+    //operation.UpdateStaffById(id1, doc{ id2
+    //        }.StaffName, xyz1);
 
     operation.DirectoryInfo();
+    operation.MoveDirectory();
 
 }
 catch (Exception ex)

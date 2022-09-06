@@ -1,14 +1,27 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Practice;
 
+int[] arr = new int[5];
 
+for (int i = 0; i < arr.Length; i++)
+{
+    arr[i] = Convert.ToInt32(Console.ReadLine());
+}
 
-//C1 c = new C1();
+for(int i = 0; i < arr.Length-1; i++)
+{
+    if(arr[i] == 5)
+    {
+        int temp =arr[i];
+        arr[i] = arr[i + 1];
+        arr[i+1] = temp;
 
+    }
+}
 
-ab a = new ab();
-a.
-
+for (int i = 0; i < arr.Length; i++)
+{
+    Console.WriteLine(arr[i]);
+}
 
 
 
