@@ -12,7 +12,7 @@ namespace CS_CSV_New
 {
     
     [Serializable]
-    public class Staff :IEnumerable<Staff>
+    public class Staff 
     {
 
         
@@ -78,15 +78,15 @@ namespace CS_CSV_New
             }
         }
 
-        public IEnumerator<Staff> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        //public IEnumerator<Staff> GetEnumerator()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 
     [Serializable]

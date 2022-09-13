@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CS_CSV_New
 {
-    public abstract class StaffLogic : IEnumerable<Staff>
+    public abstract class StaffLogic 
     {
         public abstract void RegisterStaff(Staff statff);
         public abstract Dictionary<int, Staff> GetStatffs();
@@ -22,15 +22,7 @@ namespace CS_CSV_New
 
         public abstract void searchdoctor(string str);
 
-        public IEnumerator<Staff> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         //public abstract void searchByName(string str);
 

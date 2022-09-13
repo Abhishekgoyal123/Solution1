@@ -1,7 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text.Json;
+using System.Drawing.Imaging;
 using CS_New;
-
+byte[] temp;
 Doctor doc1 = new Doctor() { StaffId = 1, StaffName = "Divyansh", Email = "divyansh@Movie.com", ContactNo = 998899, Education = "M.B.B.S", DeptName = "Cancer", StaffCategory = "doctor", Location = "pune", Specilization = "cancer" };
 Doctor doc2 = new Doctor() { StaffId = 2, StaffName = "omkar", Email = "omkar@Movie.com", ContactNo = 997799, Education = "B.A.M.S", DeptName = "Heart", StaffCategory = "doctor", Location = "mumbai", Specilization = "cancer" };
 Doctor doc3 = new Doctor() { StaffId = 3, StaffName = "rahul", Email = "rahul@Movie.com", ContactNo = 996699, Education = "B.A.M.S", DeptName = "Heart", StaffCategory = "doctor", Location = "pune", Specilization = "cancer" };
@@ -28,6 +29,8 @@ JsonSerializerMethod(doc6);
 JsonSerializerMethod(doc7);
 JsonSerializerMethod(doc8);
 
+string out11 = @"C:\Assignment\MyFile1.txt";
+
 
 JsonSerializerMethod(n1);
 JsonSerializerMethod(n2);
@@ -42,12 +45,8 @@ JsonSerializerMethod(n8);
 //ReadByCategory();
 //ReadByCount();
 //Delete();
-Update();
-
-
-
-
-
+//Update();
+Image();
 
 static void JsonSerializerMethod(Staff doc)
 {
@@ -146,17 +145,12 @@ static void ReadByCategory()
             Console.WriteLine(z.Education);
             Console.WriteLine("======================================");
             cnt++;
-
-
-
-                
+ 
             }
 
         }
     sr.Close();
     sr.Dispose();
-
-
 }
 
 static void Delete()
@@ -255,6 +249,7 @@ static void Update()
     string store = string.Empty;
 
     Staff s1 = new Doctor();
+
     while ((store = streamReader.ReadLine()) != null)
     {
         var v = JsonSerializer.Deserialize<Staff>(store);
@@ -308,3 +303,43 @@ static void Update()
     File.Copy(out1, out_my, true);
     File.Delete(out1);
 }
+
+ void Image()
+{
+    string abc = @"C:\Assignment\Screenshot (9).png";
+
+    //FileStream fs = new FileStream(abc, FileMode.Open);
+    //StreamReader sr = new StreamReader(fs);
+   
+    System.Drawing.Image img = System.Drawing.Image.FromFile(abc);
+    MemoryStream ms = new MemoryStream();
+    
+    //img.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+    img.Save(ms, img.RawFormat);
+    temp=ms.ToArray();
+    
+    foreach (var t in temp)
+    {
+        Console.Write(t);
+    }
+    ms.Close();
+    string abc1 = @"C:\Assignment\Image.jpg";
+    MemoryStream ms1 = new MemoryStream(temp);
+    System.Drawing.Image img1 = System.Drawing.Image.FromStream(ms1);
+    img1.Save(abc1, ImageFormat.Jpeg);
+  
+}
+
+Console.WriteLine("enter staff category to search");
+string abc = Console.ReadLine();
+var text = from line in File.ReadLines(out11)
+               // where line.Contains(abc)
+          
+           select line;
+
+foreach(var item in text)
+{
+    Console.WriteLine(item);
+}
+
+

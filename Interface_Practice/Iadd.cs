@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Interface_Practice
 {
-    public interface Iadd
+     interface Iadd
     {
-         int add(int x, int y)
+       public int add(int x, int y)
         {
             return x + y;
         }
     }
 
+   
     public interface Isub
     {
         public int sub(int x, int y);

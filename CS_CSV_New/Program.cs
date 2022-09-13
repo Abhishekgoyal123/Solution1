@@ -2,6 +2,10 @@
 using ServiceStack.Text;
 using System.Collections.Generic;
 using CS_CSV_New;
+using System.Text.Json;
+using CsvHelper;
+using System.Globalization;
+using CsvHelper.Configuration;
 Console.WriteLine("Hello, World!");
 
 
@@ -32,13 +36,46 @@ Write(doc1);
 static void Write(Staff doc)
 {
 
-    string out1 = @"C:\Assignment\MyCSV.";
-    CsvSerializer.SerializeToCsv<Staff>(doc);
+    string out1 = @"C:\Assignment\MyCSV.csv";
+    ////CsvSerializer.SerializeToCsv<Staff>(doc);
 
+    FileStream fs = new FileStream(out1, FileMode.Append,FileAccess.Write);
+    string a = CsvSerializer.SerializeToCsv((IEnumerable<Staff>)doc);
+    Console.WriteLine(a);
+    StreamWriter sw = new StreamWriter(fs);
 
-    using (StreamWriter sw = File.AppendText(out1))
+    using (StreamWriter sw1 = File.AppendText(out1))
     {
-        sw.WriteLine(CsvSerializer.SerializeToCsv<Staff>(doc));
+        string a1 = CsvSerializer.SerializeToCsv((IEnumerable<Staff>)doc);
+        Console.WriteLine(a1);
+
+        sw1.WriteLine(a1);
+       
+        
 
     }
+   sw.WriteLine(a);
+    sw.Close();
+    sw.Dispose();
+    fs.Close();
+    fs.Dispose();
+
+
 }
+
+//static void Write1(Staff doc)
+//{
+//    string out1 = @"C:\Assignment\MyCSV.csv";
+//    using (StreamWriter writer = new StreamWriter(out1))
+//    {
+
+//        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+//        {
+//            //csv.WriteRecords(doc);
+//            csv.WriteField(doc.StaffName);
+//        }
+//        writer.Close();
+
+//    }
+
+//}
