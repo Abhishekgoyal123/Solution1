@@ -96,77 +96,77 @@ string[] abc = new string[] { $"{doc1.StaffId}, {doc1.StaffName}, {doc1.Email}, 
 try
 {
 
-    operation.CreateFile();
+   // //operation.CreateFile();
 
     
-   // string str = operation.ReadFile();
+   //// string str = operation.ReadFile();
 
-    operation.WriteFile(abc);
+   // //operation.WriteFile(abc);
    
-    //string str = operation.ReadFile();
+   // //string str = operation.ReadFile();
 
-    //while (str != null)
-    //{
-    //    lines.Add(str);
-    //}
+   // //while (str != null)
+   // //{
+   // //    lines.Add(str);
+   // //}
 
-    //foreach (string value in lines)
-    //{
-    //    Console.WriteLine(value);
-    //}
-    Console.WriteLine("enter staff category to search");
-    string category = Console.ReadLine();
-    operation.ReadFileByCategory(category);
+   // //foreach (string value in lines)
+   // //{
+   // //    Console.WriteLine(value);
+   // //}
+   // Console.WriteLine("enter staff category to search");
+   // string category = Console.ReadLine();
+   // operation.ReadFileByCategory(category);
 
-    Console.WriteLine("enter staff id to search");
-    int id = Convert.ToInt32(Console.ReadLine());
-    operation.ReadFileByID(id);
-    //Console.WriteLine(str);
+   // Console.WriteLine("enter staff id to search");
+   // int id = Convert.ToInt32(Console.ReadLine());
+   // operation.ReadFileByID(id);
+   // //Console.WriteLine(str);
 
-    Console.WriteLine("enter count of staff to search");
-    int count = Convert.ToInt32(Console.ReadLine());
-    operation.ReadRecordsByCount(count);
-   // operation.FileDetails();
-    // Console.WriteLine(a1);
+   // Console.WriteLine("enter count of staff to search");
+   // int count = Convert.ToInt32(Console.ReadLine());
+   // operation.ReadRecordsByCount(count);
+   //// operation.FileDetails();
+   // // Console.WriteLine(a1);
 
-    Console.WriteLine("enter staff id to delete");
-    int id1 = Convert.ToInt32(Console.ReadLine());
-    operation.DeleteStaffById(id1);
+   // Console.WriteLine("enter staff id to delete");
+   // int id1 = Convert.ToInt32(Console.ReadLine());
+   // operation.DeleteStaffById(id1);
 
-    Console.WriteLine("enter staff id to update");
-    int id2 = Convert.ToInt32(Console.ReadLine());
+   // Console.WriteLine("enter staff id to update");
+   // int id2 = Convert.ToInt32(Console.ReadLine());
 
-    Console.WriteLine("enter staff parameter to update");
-    //int id2 = Convert.ToInt32(Console.ReadLine());
-    string parameter = Console.ReadLine();
+   // Console.WriteLine("enter staff parameter to update");
+   // //int id2 = Convert.ToInt32(Console.ReadLine());
+   // string parameter = Console.ReadLine();
 
-    //string xyz = $"{doc.id2}.{parameter}" +
-    //    $"";
+   // //string xyz = $"{doc.id2}.{parameter}" +
+   // //    $"";
 
-     string xyz = $"{"doc"}{id2}.{parameter}";
-    for (int i = 0; i < abc.Length; i++)
-    {
-        if (abc[i] == xyz)
-        {
-            Console.WriteLine("yes");
-        }
-    }
+   //  string xyz = $"{"doc"}{id2}.{parameter}";
+   // for (int i = 0; i < abc.Length; i++)
+   // {
+   //     if (abc[i] == xyz)
+   //     {
+   //         Console.WriteLine("yes");
+   //     }
+   // }
 
    
-       //string n= "{" +doc.StaffName;
-    //Console.WriteLine(xyz);
-    //Console.WriteLine(n);
+   //    //string n= "{" +doc.StaffName;
+   // //Console.WriteLine(xyz);
+   // //Console.WriteLine(n);
 
-    Console.WriteLine("enter staff parameter value to update");
-    //int id2 = Convert.ToInt32(Console.ReadLine());
-    string value = Console.ReadLine();
+   // Console.WriteLine("enter staff parameter value to update");
+   // //int id2 = Convert.ToInt32(Console.ReadLine());
+   // string value = Console.ReadLine();
 
-    string xyz1 = doc1.StaffName;
-    //operation.UpdateStaffById(id1, doc{ id2
-    //        }.StaffName, xyz1);
+   // string xyz1 = doc1.StaffName;
+   // //operation.UpdateStaffById(id1, doc{ id2
+   // //        }.StaffName, xyz1);
 
     operation.DirectoryInfo();
-    operation.MoveDirectory();
+   // operation.MoveDirectory();
 
 }
 catch (Exception ex)

@@ -193,6 +193,8 @@ namespace CS_Assignment
                 streamWriter.Close();
 
                 streamWriter.Dispose();
+                fs.Close();
+                fs.Dispose();
                 // Console.WriteLine(str);
             }
             catch (Exception ex)
@@ -243,6 +245,9 @@ namespace CS_Assignment
                 streamWriter.Close();
 
                 streamWriter.Dispose();
+
+                fs.Close();
+                fs.Dispose();
                 // Console.WriteLine(str);
             }
             catch (Exception ex)
@@ -276,28 +281,36 @@ namespace CS_Assignment
         //}
         public void Dispose()
         {
-            fs.Dispose();
+           
             GC.SuppressFinalize(this);
         }
 
         public void DirectoryInfo()
         {
-            string Dirpath = @"C:\Assignment";
-            DirectoryInfo dinfo = new DirectoryInfo(Dirpath);
-
-            FileInfo[] Files = dinfo.GetFiles("*", SearchOption.AllDirectories);
-
-
-            foreach (var i in Files)
+            try
             {
-               
-                Console.WriteLine($"File Name - {i.Name}");
-                Console.WriteLine($"File Size - {i.Length} bytes");
-                Console.WriteLine($"Creation Time - {i.CreationTime}");
-                Console.WriteLine($"date modified - {i.LastWriteTime}");
-                Console.WriteLine("=========================================================================");
+                string Dirpath = @"C:\Assignment\CheckMoved";
+                DirectoryInfo dinfo = new DirectoryInfo(Dirpath);
 
+                FileInfo[] Files = dinfo.GetFiles(" * ", SearchOption.AllDirectories);
+
+
+                foreach (var i in Files)
+                {
+
+                    Console.WriteLine($"File Name - {i.Name}");
+                    Console.WriteLine($"File Size - {i.Length} bytes");
+                    Console.WriteLine($"Creation Time - {i.CreationTime}");
+                    Console.WriteLine($"date modified - {i.LastWriteTime}");
+                    Console.WriteLine("=========================================================================");
+
+                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
             public void MoveDirectory()

@@ -1,11 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using ServiceStack.Text;
+//using ServiceStack.Text;
 using System.Collections.Generic;
 using CS_CSV_New;
+using LINQtoCSV;
 using System.Text.Json;
-using CsvHelper;
+//using CsvHelper;
 using System.Globalization;
-using CsvHelper.Configuration;
+//using CsvHelper.Configuration;
 Console.WriteLine("Hello, World!");
 
 
@@ -33,35 +34,36 @@ Nurse n8 = new Nurse() { StaffId = 16, StaffName = "sonal", Email = "sonal@Movie
 Write(doc1);
 
 
-static void Write(Staff doc)
-{
 
-    string out1 = @"C:\Assignment\MyCSV.csv";
-    ////CsvSerializer.SerializeToCsv<Staff>(doc);
+//static void Write(Staff doc)
+//{
 
-    FileStream fs = new FileStream(out1, FileMode.Append,FileAccess.Write);
-    string a = CsvSerializer.SerializeToCsv((IEnumerable<Staff>)doc);
-    Console.WriteLine(a);
-    StreamWriter sw = new StreamWriter(fs);
+//    string out1 = @"C:\Assignment\MyCSV.csv";
+//    ////CsvSerializer.SerializeToCsv<Staff>(doc);
 
-    using (StreamWriter sw1 = File.AppendText(out1))
-    {
-        string a1 = CsvSerializer.SerializeToCsv((IEnumerable<Staff>)doc);
-        Console.WriteLine(a1);
+//    FileStream fs = new FileStream(out1, FileMode.Append,FileAccess.Write);
+//    string a = CsvSerializer.SerializeToCsv((IEnumerable<Staff>)doc);
+//    Console.WriteLine(a);
+//    StreamWriter sw = new StreamWriter(fs);
 
-        sw1.WriteLine(a1);
-       
-        
+//    using (StreamWriter sw1 = File.AppendText(out1))
+//    {
+//        string a1 = CsvSerializer.SerializeToCsv((IEnumerable<Staff>)doc);
+//        Console.WriteLine(a1);
 
-    }
-   sw.WriteLine(a);
-    sw.Close();
-    sw.Dispose();
-    fs.Close();
-    fs.Dispose();
+//        sw1.WriteLine(a1);
 
 
-}
+
+//    }
+//   sw.WriteLine(a);
+//    sw.Close();
+//    sw.Dispose();
+//    fs.Close();
+//    fs.Dispose();
+
+
+//}
 
 //static void Write1(Staff doc)
 //{
@@ -79,3 +81,12 @@ static void Write(Staff doc)
 //    }
 
 //}
+
+
+static void Write(Staff doc)
+{
+    var CsvContext = new CsvContext();
+    string out1 = @"C:\Assignment\MyCSV.csv";
+    CsvContext.Write<Staff>(doc, out1);
+
+}

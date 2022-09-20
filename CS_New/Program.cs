@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text.Json;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
 using CS_New;
 byte[] temp;
 Doctor doc1 = new Doctor() { StaffId = 1, StaffName = "Divyansh", Email = "divyansh@Movie.com", ContactNo = 998899, Education = "M.B.B.S", DeptName = "Cancer", StaffCategory = "doctor", Location = "pune", Specilization = "cancer" };
@@ -46,7 +48,8 @@ JsonSerializerMethod(n8);
 //ReadByCount();
 //Delete();
 //Update();
-Image();
+//Image();
+DirectoryInfo();
 
 static void JsonSerializerMethod(Staff doc)
 {
@@ -313,7 +316,7 @@ static void Update()
    
     System.Drawing.Image img = System.Drawing.Image.FromFile(abc);
     MemoryStream ms = new MemoryStream();
-    
+   
     //img.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
     img.Save(ms, img.RawFormat);
     temp=ms.ToArray();
@@ -330,16 +333,63 @@ static void Update()
   
 }
 
-Console.WriteLine("enter staff category to search");
-string abc = Console.ReadLine();
-var text = from line in File.ReadLines(out11)
-               // where line.Contains(abc)
-          
-           select line;
+//Console.WriteLine("enter staff category to search");
+//string abc = Console.ReadLine();
 
-foreach(var item in text)
+//FileStream fs1 = new FileStream(out11, FileMode.Open, FileAccess.Read);
+//StreamReader sw = new StreamReader(fs1);
+//string ln = sw.ReadLine();
+//string ln1 = sw.ReadLine();
+//var a = JsonSerializer.Deserialize<Staff>(ln);
+//var text = from line in ln
+//          // join ln1 in 
+//               // where line.Contains(abc)
+//           where a.StaffId == 1
+//           select line;
+
+//foreach(var item in text)
+//{
+//    Console.Write(item);
+//}
+
+
+// void DirectoryInfo()
+//{
+//    Console.WriteLine("abhishek");
+//    string Dirpath = @"C:\Assignment";
+//    /*DirectoryInfo dinfo = new DirectoryInfo(Dirpath)*/;
+
+//    string[] filenames = Directory.GetFiles(Dirpath,"*",SearchOption.AllDirectories);
+
+
+
+//    foreach (var i in filenames)
+//    {
+//        Console.WriteLine(i);
+
+//        Console.WriteLine($"File Name - {i}");
+
+//        Console.WriteLine("=========================================================================");
+
+//    }
+//}
+
+static void DirectoryInfo()
 {
-    Console.WriteLine(item);
+    string Dirpath = @"C:\Assignment\CheckMoved";
+    DirectoryInfo dinfo = new DirectoryInfo(Dirpath);
+
+    FileInfo[] Files = dinfo.GetFiles("*",SearchOption.AllDirectories);
+    
+   
+        foreach (var i in Files)
+    {
+
+        Console.WriteLine($"File Name - {i.Name}");
+        Console.WriteLine($"File Size - {i.Length} bytes");
+        Console.WriteLine($"Creation Time - {i.CreationTime}");
+        Console.WriteLine($"date modified - {i.LastWriteTime}");
+        Console.WriteLine("=========================================================================");
+
+    }
 }
-
-
