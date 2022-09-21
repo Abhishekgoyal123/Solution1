@@ -5,6 +5,7 @@ using CS_CSV_New;
 //using LINQtoCSV;
 using System.Text.Json;
 using CsvHelper;
+
 using System.Globalization;
 //using CsvHelper.Configuration;
 Console.WriteLine("Hello, World!");
@@ -30,8 +31,31 @@ Nurse n7 = new Nurse() { StaffId = 15, StaffName = "khushi", Email = "khushi@Mov
 Nurse n8 = new Nurse() { StaffId = 16, StaffName = "sonal", Email = "sonal@Movie.com", DeptName = "dental", ContactNo = 9988989, StaffCategory = "nurse", Location = "pune", Experience = 10, };
 
 
+//string out1 = @"C:\Assignment\MyCSV.csv";
+//StreamWriter writer = new StreamWriter(out1);
 
-//Write(doc1);
+string[] arr = new string[7] { "StaffId", "StaffName", "Email", " Location", "DeptName", "StaffCategory", "ContactNo" };
+
+//WriteFile(arr);
+
+//ColumnHeading();
+colHeading();
+Write1(doc1);
+Write1(doc2);
+Write1(doc3);
+Write1(doc4);
+Write1(doc5);
+Write1(doc6);
+Write1(doc7);
+Write1(doc8);
+Write1(n1);
+Write1(n2);
+Write1(n3);
+Write1(n4);
+Write1(n5);
+Write1(n6);
+Write1(n7);
+Write1(n8);
 
 // Service stack
 
@@ -65,20 +89,62 @@ Nurse n8 = new Nurse() { StaffId = 16, StaffName = "sonal", Email = "sonal@Movie
 
 //}
 
-static void Write1(Staff doc)
+static void colHeading()
 {
     string out1 = @"C:\Assignment\MyCSV.csv";
-    using (StreamWriter writer = new StreamWriter(out1))
+    using (StreamWriter sw = File.AppendText(out1))
     {
-
-        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+        using (var csv = new CsvWriter(sw, CultureInfo.InvariantCulture))
         {
-            csv.WriteRecords(doc);
+            csv.WriteField("Staffid");
+            csv.WriteField("Staffname");
+           
+
             //csv.WriteField(doc.StaffName);
         }
-        writer.Close();
 
     }
+}
+
+ static void Write1(Staff doc)
+{
+
+    //using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+    //{
+    //    csv.WriteRecord(doc);
+    //    //csv.WriteField(doc.StaffName);
+    //}
+
+
+    string out1 = @"C:\Assignment\MyCSV.csv";
+
+    //FileStream fs = new FileStream(out1, FileMode.Append);
+
+    //StreamWriter sw = new StreamWriter(fs);
+
+    //var csv = new CsvWriter(sw, CultureInfo.InvariantCulture);
+
+    //    csv.WriteRecord(doc);
+    //fs.Close();
+    //fs.Dispose();
+    //sw.Close();
+    //sw.Dispose();
+
+    using (StreamWriter sw = File.AppendText(out1))
+    {
+        using (var csv = new CsvWriter(sw, CultureInfo.InvariantCulture))
+        {
+            
+            csv.WriteRecord(doc);
+            sw.WriteLine();
+
+            //csv.WriteField(doc.StaffName);
+        }
+
+    }
+
+
+
 
 }
 
@@ -91,3 +157,53 @@ static void Write1(Staff doc)
 //    CsvContext.Write<Staff>(doc, out1);
 
 //}
+
+
+
+static void ColumnHeading()
+{
+    string out2 = @"C:\Assignment\MyCSV.csv";
+    FileStream fs = new FileStream(out2, FileMode.OpenOrCreate, FileAccess.Write);
+    StreamWriter sw = new StreamWriter(fs);
+
+    //sw.WriteLine("Staff_Id");
+
+    //fs.Close();
+    //fs.Dispose();
+
+    using (var csv = new CsvWriter(sw, CultureInfo.InvariantCulture))
+    {
+        csv.WriteField("Staffid");
+        csv.WriteRecord("fwr");
+       // sw.WriteLine();
+
+        //csv.WriteField(doc.StaffName);
+    }
+
+
+
+}
+
+
+//string[] arr = new string[5] { "staffid" ,"bnmb" , "b vm"," bbm","vm"};
+
+ void WriteFile(string[] contents)
+{
+    string out2 = @"C:\Assignment\MyCSV.csv";
+
+    foreach (var item in contents)
+    {
+        string s = item;
+        FileStream fs = new FileStream(out2, FileMode.OpenOrCreate, FileAccess.Write);
+        StreamWriter sw = new StreamWriter(fs);
+        //contents = new string[] {"abc" , "wdf" }; 
+        sw.Write(s);
+        sw.Close();
+        sw.Dispose();
+    }
+       
+            
+       
+
+}
+
