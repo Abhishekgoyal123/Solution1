@@ -2,9 +2,9 @@
 //using ServiceStack.Text;
 using System.Collections.Generic;
 using CS_CSV_New;
-using LINQtoCSV;
+//using LINQtoCSV;
 using System.Text.Json;
-//using CsvHelper;
+using CsvHelper;
 using System.Globalization;
 //using CsvHelper.Configuration;
 Console.WriteLine("Hello, World!");
@@ -31,9 +31,9 @@ Nurse n8 = new Nurse() { StaffId = 16, StaffName = "sonal", Email = "sonal@Movie
 
 
 
-Write(doc1);
+//Write(doc1);
 
-
+// Service stack
 
 //static void Write(Staff doc)
 //{
@@ -65,28 +65,29 @@ Write(doc1);
 
 //}
 
-//static void Write1(Staff doc)
-//{
-//    string out1 = @"C:\Assignment\MyCSV.csv";
-//    using (StreamWriter writer = new StreamWriter(out1))
-//    {
-
-//        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-//        {
-//            //csv.WriteRecords(doc);
-//            csv.WriteField(doc.StaffName);
-//        }
-//        writer.Close();
-
-//    }
-
-//}
-
-
-static void Write(Staff doc)
+static void Write1(Staff doc)
 {
-    var CsvContext = new CsvContext();
     string out1 = @"C:\Assignment\MyCSV.csv";
-    CsvContext.Write<Staff>(doc, out1);
+    using (StreamWriter writer = new StreamWriter(out1))
+    {
+
+        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+        {
+            csv.WriteRecords(doc);
+            //csv.WriteField(doc.StaffName);
+        }
+        writer.Close();
+
+    }
 
 }
+
+
+// csv context
+//static void Write(Staff doc)
+//{
+//    var CsvContext = new CsvContext();
+//    string out1 = @"C:\Assignment\MyCSV.csv";
+//    CsvContext.Write<Staff>(doc, out1);
+
+//}

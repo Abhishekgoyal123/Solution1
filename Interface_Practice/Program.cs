@@ -8,7 +8,8 @@ int x = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("enter y");
 int y = Convert.ToInt32(Console.ReadLine());
 
-//Iadd a1 = new abcd();
+Iadd a1 = new abcd();
+
 
 int c = a1.add(x, y);
 Console.WriteLine(c);

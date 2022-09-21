@@ -7,7 +7,8 @@ using Interface_Practice;
 
 namespace Interface_Practice
 {
-    public class abcd : Iadd , Isub
+     
+    public abstract class abcd
     {
        public int add(int a, int b)
         {
@@ -21,4 +22,5 @@ namespace Interface_Practice
             return a - b;
         }
     }
+    
 }

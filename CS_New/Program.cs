@@ -49,7 +49,10 @@ JsonSerializerMethod(n8);
 //Delete();
 //Update();
 //Image();
-DirectoryInfo();
+//DirectoryInfo();
+//MoveDirectory();
+Extension();
+
 
 static void JsonSerializerMethod(Staff doc)
 {
@@ -393,3 +396,46 @@ static void DirectoryInfo()
 
     }
 }
+
+static void MoveDirectory()
+{
+    string SourceDir = @"C:\Assignment\Udemy";
+    string DestinationDir = @"C:\Assignment\CheckMoved";
+    //string targetFile = Path.Combine(destinationLocation, Path.GetFileName(file));
+
+    DirectoryInfo dinfo = new DirectoryInfo(SourceDir);
+
+    string[] Files = Directory.GetFiles(SourceDir, "*", SearchOption.AllDirectories);
+
+    // FileInfo[] Files = dinfo.GetFiles("*", SearchOption.AllDirectories);
+    //dinfo.MoveTo(DestinationDir);
+
+    foreach (var i in Files)
+    {
+
+        string sourceFile = Path.Combine(SourceDir, Path.GetFileName(i));
+
+        string targetFile = Path.Combine(DestinationDir, Path.GetFileName(i));
+
+        //string abc = $"{DestinationDir} {i.Name}.txt";
+
+        //i.CopyTo(targetFile);
+        // File.Copy(sourceFile, targetFile);
+
+        File.Copy(sourceFile, targetFile);
+       
+    }
+
+
+}
+
+static void Extension()
+{
+    string path = @"C:\Assignment\Test.jpg";
+string path2 = @"C:\Assignment";
+    FileInfo fileInfo = new FileInfo(path);
+//string Extension = fileInfo.Extension;
+fileInfo.MoveTo(Path.ChangeExtension(path, ".png"));
+//File.Copy(file, destination);
+}
+        
