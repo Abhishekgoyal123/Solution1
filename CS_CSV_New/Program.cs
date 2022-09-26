@@ -7,6 +7,8 @@ using System.Text.Json;
 using CsvHelper;
 
 using System.Globalization;
+using CsvHelper.Configuration;
+using System.Text;
 //using CsvHelper.Configuration;
 Console.WriteLine("Hello, World!");
 
@@ -31,15 +33,10 @@ Nurse n7 = new Nurse() { StaffId = 15, StaffName = "khushi", Email = "khushi@Mov
 Nurse n8 = new Nurse() { StaffId = 16, StaffName = "sonal", Email = "sonal@Movie.com", DeptName = "dental", ContactNo = 9988989, StaffCategory = "nurse", Location = "pune", Experience = 10, };
 
 
-//string out1 = @"C:\Assignment\MyCSV.csv";
-//StreamWriter writer = new StreamWriter(out1);
 
-string[] arr = new string[7] { "StaffId", "StaffName", "Email", " Location", "DeptName", "StaffCategory", "ContactNo" };
+colHeading(doc1);
 
-//WriteFile(arr);
 
-//ColumnHeading();
-colHeading();
 Write1(doc1);
 Write1(doc2);
 Write1(doc3);
@@ -89,18 +86,24 @@ Write1(n8);
 
 //}
 
-static void colHeading()
+string[] arr = new string[1] { "id" };
+static void colHeading(Staff doc)
 {
     string out1 = @"C:\Assignment\MyCSV.csv";
     using (StreamWriter sw = File.AppendText(out1))
     {
         using (var csv = new CsvWriter(sw, CultureInfo.InvariantCulture))
         {
-            csv.WriteField("Staffid");
-            csv.WriteField("Staffname");
-           
+            //csv.WriteField("Staff_Id");
+            //csv.WriteField("Staff_Name");
+            //csv.WriteField("Staff_Email");
+            //csv.WriteField("Staff_Location");
+            //csv.WriteField("Staff_Deptartment");
+            //csv.WriteField("Staff_Category");
+            //csv.WriteField("Contact_No");
 
-            //csv.WriteField(doc.StaffName);
+            csv.WriteHeader<Staff>();
+
         }
 
     }
@@ -109,32 +112,12 @@ static void colHeading()
  static void Write1(Staff doc)
 {
 
-    //using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-    //{
-    //    csv.WriteRecord(doc);
-    //    //csv.WriteField(doc.StaffName);
-    //}
-
-
     string out1 = @"C:\Assignment\MyCSV.csv";
-
-    //FileStream fs = new FileStream(out1, FileMode.Append);
-
-    //StreamWriter sw = new StreamWriter(fs);
-
-    //var csv = new CsvWriter(sw, CultureInfo.InvariantCulture);
-
-    //    csv.WriteRecord(doc);
-    //fs.Close();
-    //fs.Dispose();
-    //sw.Close();
-    //sw.Dispose();
 
     using (StreamWriter sw = File.AppendText(out1))
     {
         using (var csv = new CsvWriter(sw, CultureInfo.InvariantCulture))
         {
-            
             csv.WriteRecord(doc);
             sw.WriteLine();
 
@@ -143,10 +126,8 @@ static void colHeading()
 
     }
 
-
-
-
 }
+
 
 
 // csv context
@@ -157,53 +138,32 @@ static void colHeading()
 //    CsvContext.Write<Staff>(doc, out1);
 
 //}
+string out1 = @"C:\Assignment\MyCSV.csv";
+
+
+var configuration = new CsvConfiguration(CultureInfo.InvariantCulture);
 
 
 
-static void ColumnHeading()
+
+
+
+using (var fs = File.Open(out1, FileMode.Open, FileAccess.Read, FileShare.Read))
 {
-    string out2 = @"C:\Assignment\MyCSV.csv";
-    FileStream fs = new FileStream(out2, FileMode.OpenOrCreate, FileAccess.Write);
-    StreamWriter sw = new StreamWriter(fs);
-
-    //sw.WriteLine("Staff_Id");
-
-    //fs.Close();
-    //fs.Dispose();
-
-    using (var csv = new CsvWriter(sw, CultureInfo.InvariantCulture))
+    using (var textReader = new StreamReader(fs))
+    using (var csv = new CsvReader(textReader, configuration))
     {
-        csv.WriteField("Staffid");
-        csv.WriteRecord("fwr");
-       // sw.WriteLine();
+        var data = csv.GetRecords<Staff>();
 
-        //csv.WriteField(doc.StaffName);
-    }
-
-
-
-}
-
-
-//string[] arr = new string[5] { "staffid" ,"bnmb" , "b vm"," bbm","vm"};
-
- void WriteFile(string[] contents)
-{
-    string out2 = @"C:\Assignment\MyCSV.csv";
-
-    foreach (var item in contents)
-    {
-        string s = item;
-        FileStream fs = new FileStream(out2, FileMode.OpenOrCreate, FileAccess.Write);
-        StreamWriter sw = new StreamWriter(fs);
-        //contents = new string[] {"abc" , "wdf" }; 
-        sw.Write(s);
-        sw.Close();
-        sw.Dispose();
-    }
-       
+        
+        foreach (var item in data)
+        {
+            if (item.StaffId == 9)
+            {
+                Console.WriteLine(item.ContactNo);
+            }
+            Console.WriteLine(item.StaffId);
             
-       
-
+        }
+    }
 }
-

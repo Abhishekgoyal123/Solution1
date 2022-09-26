@@ -2,7 +2,7 @@
 
 Console.WriteLine("Hello, World!");
 
-ConvertToWords convertToWords = new ConvertToWords();
+//ConvertToWords convertToWords = new ConvertToWords();
 
 
 StaffLogic logic = new DoctorLogic();
@@ -356,28 +356,28 @@ do
                     Accounts accounts = new Accounts();
                
                     Console.WriteLine($"Total Income = {accounts.GetStaffTotalIncome(staffDoc)}");
-                    var abc= convertToWords.convertToWords(accounts.GetStaffTotalIncome(staffDoc));
-                    Console.WriteLine(abc);
+                   // var abc= convertToWords.convertToWords(accounts.GetStaffTotalIncome(staffDoc));
+                    //Console.WriteLine(abc);
                    
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine($" ShareToHospital  = {accounts.GetShareToHospital(staffDoc)}");
-                    var abc1 = convertToWords.convertToWords(accounts.GetShareToHospital(staffDoc));
-                    Console.WriteLine(abc1);
+                    //var abc1 = convertToWords.convertToWords(accounts.GetShareToHospital(staffDoc));
+                    //Console.WriteLine(abc1);
 
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine($" Net Income  = {accounts.GetStaffNetIncome(staffDoc)}");
-                    var abc2 = convertToWords.convertToWords(accounts.GetStaffNetIncome(staffDoc));
-                    Console.WriteLine(abc2);
+                    //var abc2 = convertToWords.convertToWords(accounts.GetStaffNetIncome(staffDoc));
+                    //Console.WriteLine(abc2);
 
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine($"Net Tax  = {accounts.GetTax(staffDoc)}");
-                    var abc3 = convertToWords.convertToWords(accounts.GetTax(staffDoc));
-                    Console.WriteLine(abc3);
+                    //var abc3 = convertToWords.convertToWords(accounts.GetTax(staffDoc));
+                    //Console.WriteLine(abc3);
 
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine($"Gross Income  = {accounts.GetGrossIncome(staffDoc)}");
-                    var abc4 = convertToWords.convertToWords(accounts.GetGrossIncome(staffDoc));
-                    Console.WriteLine(abc4);
+                    //var abc4 = convertToWords.convertToWords(accounts.GetGrossIncome(staffDoc));
+                    //Console.WriteLine(abc4);
 
                     Console.WriteLine("===============================================================================================");
                     Console.WriteLine();
@@ -410,30 +410,30 @@ do
                     Console.WriteLine("===============================================================================================");
 
                     Console.WriteLine($"Total Income  = {accounts.GetStaffTotalIncome(staffNur)}");
-                    var abc1 = convertToWords.convertToWords(accounts.GetStaffTotalIncome(staffNur));
-                    Console.WriteLine(abc1);
+                    //var abc1 = convertToWords.convertToWords(accounts.GetStaffTotalIncome(staffNur));
+                    //Console.WriteLine(abc1);
                     Console.WriteLine("===============================================================================================");
 
                     Console.WriteLine($" ShareToHospital  = {accounts.GetShareToHospital(staffNur)}");
-                    var abc2 = convertToWords.convertToWords(accounts.GetShareToHospital(staffNur));
-                    Console.WriteLine(abc2);
+                    //var abc2 = convertToWords.convertToWords(accounts.GetShareToHospital(staffNur));
+                   // Console.WriteLine(abc2);
 
                     Console.WriteLine("===============================================================================================");
 
                     Console.WriteLine($" Net Income  = {accounts.GetStaffNetIncome(staffNur)}");
-                    var abc3 = convertToWords.convertToWords(accounts.GetStaffNetIncome(staffNur));
-                    Console.WriteLine(abc3);
+                    //var abc3 = convertToWords.convertToWords(accounts.GetStaffNetIncome(staffNur));
+                    //Console.WriteLine(abc3);
 
                     Console.WriteLine("===============================================================================================");
 
                     Console.WriteLine($"Net Tax  = {accounts.GetTax(staffNur)}");
-                    var abc4 = convertToWords.convertToWords(accounts.GetTax(staffNur));
-                    Console.WriteLine(abc4);
+                    //var abc4 = convertToWords.convertToWords(accounts.GetTax(staffNur));
+                    //Console.WriteLine(abc4);
                     Console.WriteLine("===============================================================================================");
 
                     Console.WriteLine($"Gross Income = {accounts.GetGrossIncome(staffNur)}");
-                    var abc5 = convertToWords.convertToWords(accounts.GetGrossIncome(staffNur));
-                    Console.WriteLine(abc5);
+                    //var abc5 = convertToWords.convertToWords(accounts.GetGrossIncome(staffNur));
+                   // Console.WriteLine(abc5);
                     Console.WriteLine();
                     //break;
                 }
