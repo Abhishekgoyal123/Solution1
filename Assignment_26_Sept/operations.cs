@@ -109,6 +109,8 @@ namespace Assignment_26_Sept
                     sw.WriteLine($" Name: {item.StaffName} \n Category : {item.StaffCategory} \n salary: {item.Salary} \n tax = {item.Tax}");
                 }
             }
+
+
         }
 
     }

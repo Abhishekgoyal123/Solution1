@@ -87,7 +87,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Random", "Random\Random.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_Partial", "CS_Partial\CS_Partial.csproj", "{8FC809EB-830E-4253-AC86-F35BD17BFFAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_26_Sept", "Assignment_26_Sept\Assignment_26_Sept.csproj", "{EDC0E7A4-AB0A-47A6-8FAC-06A742A6C51C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment_26_Sept", "Assignment_26_Sept\Assignment_26_Sept.csproj", "{EDC0E7A4-AB0A-47A6-8FAC-06A742A6C51C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thread_Practice", "Thread_Practice\Thread_Practice.csproj", "{6A52247C-069E-4132-AF6A-AA146BFB4B73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_Parallel", "CS_Parallel\CS_Parallel.csproj", "{B27EA07A-E755-4280-9C16-A43136B00BA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_27_09", "Assignment_27_09\Assignment_27_09.csproj", "{DFA93226-B138-45D8-81EA-55DC02F815B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -263,6 +269,18 @@ Global
 		{EDC0E7A4-AB0A-47A6-8FAC-06A742A6C51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC0E7A4-AB0A-47A6-8FAC-06A742A6C51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC0E7A4-AB0A-47A6-8FAC-06A742A6C51C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A52247C-069E-4132-AF6A-AA146BFB4B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A52247C-069E-4132-AF6A-AA146BFB4B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A52247C-069E-4132-AF6A-AA146BFB4B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A52247C-069E-4132-AF6A-AA146BFB4B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B27EA07A-E755-4280-9C16-A43136B00BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B27EA07A-E755-4280-9C16-A43136B00BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B27EA07A-E755-4280-9C16-A43136B00BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B27EA07A-E755-4280-9C16-A43136B00BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA93226-B138-45D8-81EA-55DC02F815B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA93226-B138-45D8-81EA-55DC02F815B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA93226-B138-45D8-81EA-55DC02F815B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA93226-B138-45D8-81EA-55DC02F815B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
