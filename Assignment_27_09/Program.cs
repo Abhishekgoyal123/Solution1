@@ -105,20 +105,21 @@ deptlogic.RegisterDepartment(d13);
 
 
 
-Console.WriteLine("enter department to search");
 
-string dept = Console.ReadLine();
 
 bool isFound = false;
 
 
 var bgThread = new Thread(() =>
 {
-    
+    Console.WriteLine("enter dept to search");
+    string dept = Console.ReadLine();
+
     foreach (var s1 in HospitalDbStore.DepartmentInfo.Values)
     {
 
         if (dept == s1.DeptName)
+
         {
             
              isFound = true;
@@ -136,17 +137,14 @@ var bgThread = new Thread(() =>
             }
             break;
         }
-        
-        
-            
 
+    }
+    if (isFound == false)
+    {
+        Console.WriteLine("dept not found");
     }
 });
 bgThread.IsBackground = true;
 bgThread.Start();
-bgThread.Join();
 
-if (isFound == false)
-{
-    Console.WriteLine("dept not found");
-}
+

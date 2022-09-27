@@ -91,7 +91,7 @@ namespace Assignment_26_Sept
         public void Master(object l1)
         {
 
-            using (StreamWriter sw = new StreamWriter($@"C:\Assignment\Threading\Master.txt", true))
+            using (StreamWriter sw = new StreamWriter($@"C:\", true))
             {
                 foreach (var item in (List<Staff>)l1)
                 {

@@ -18,24 +18,14 @@
             return emp;
         }
 
-        public static void Master(Employee emp)
-        {
-
-            using (StreamWriter sw = new StreamWriter($@"C:\Assignment\Threading\Master.txt", true))
-            {
-                foreach (var item in Employee)
-                {
-                    sw.WriteLine(JsonSerializer.Serialize(item));
-                }
-            }
-        }
+        
     }
 
     public class EmployeeList : List<Employee>
     {
         public EmployeeList()
         {
-            Add(new Employee() { EmpNo = 101, EmpName = "Abhay", Salary = 11000 });
+            Add(new Employee() { EmpNo = 101, EmpName = "Abhay", });
             Add(new Employee() { EmpNo = 102, EmpName = "Baban", Salary = 22000 });
             Add(new Employee() { EmpNo = 103, EmpName = "Chaitanya", Salary = 33000 });
             Add(new Employee() { EmpNo = 104, EmpName = "Deepak", Salary = 44000 });
