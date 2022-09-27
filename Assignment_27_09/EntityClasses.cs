@@ -72,12 +72,14 @@ namespace Entities
             }
         }
 
+        public int DeptNo { get; set; }
+
 
     }
 
     public class Doctor : Staff
     {
-
+      
         public string Education { get; set; } = string.Empty;
         public string Specilization { get; set; } = string.Empty;
 

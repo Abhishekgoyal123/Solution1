@@ -27,5 +27,32 @@ namespace Department
                 HospitalDbStore.DepartmentInfo.Add(dept1.DeptNo, dept1);
             }
         }
+
+        public void Search()
+        {
+            bool isFound;
+            Console.WriteLine("enter department to search");
+
+            string dept = Console.ReadLine();
+
+            foreach (var s1 in HospitalDbStore.DepartmentInfo.Values)
+            {
+
+                if (dept == s1.DeptName)
+                {
+                     isFound = true;
+                    
+
+                }
+                else
+                {
+                     isFound = false;
+                    
+                }
+                
+            }
+            
+        }
     }
 }
+
