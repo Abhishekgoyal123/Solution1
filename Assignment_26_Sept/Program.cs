@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+// See https://aka.ms/new-console-template for more information
 using Assignment_26_Sept;
 using StaffLogic;
 using Account;
@@ -55,8 +56,16 @@ t1.Join();
 
 Parallel.Invoke(() =>
 {
-    op1.Master(StaffData.StaffList);
-    op1.salarySlip(StaffData.StaffList);
+    try
+    {
+        op1.Master(StaffData.StaffList);
+        op1.salarySlip(StaffData.StaffList);
+    }
+    catch(Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+    
 });
 
 

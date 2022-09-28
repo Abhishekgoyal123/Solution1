@@ -1,4 +1,4 @@
-﻿namespace CS_Parallel_For
+﻿namespace Assignment_28_Sept
 {
     public class Employee
     {
@@ -21,13 +21,11 @@
         
     }
 
-    
-
     public class EmployeeList : List<Employee>
     {
         public EmployeeList()
         {
-            Add(new Employee() { EmpNo = 101, EmpName = "Abhay", });
+            Add(new Employee() { EmpNo = 101, EmpName = "Abhay",Salary = 18000 });
             Add(new Employee() { EmpNo = 102, EmpName = "Baban", Salary = 22000 });
             Add(new Employee() { EmpNo = 103, EmpName = "Chaitanya", Salary = 33000 });
             Add(new Employee() { EmpNo = 104, EmpName = "Deepak", Salary = 44000 });

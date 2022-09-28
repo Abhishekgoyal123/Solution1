@@ -17,6 +17,7 @@ namespace Assignment_26_Sept
         {
             Console.WriteLine("Using An Accountant GAteway to Get an INome");
             Console.WriteLine("Enter staff id to Get an INome");
+            
             int id11 = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine(StaffData.StaffList.Count);

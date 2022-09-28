@@ -104,7 +104,8 @@ DepartmentLogic d13 = new DepartmentLogic()
 deptlogic.RegisterDepartment(d13);
 
 
-
+Console.WriteLine("enter dept to search");
+string dept = Console.ReadLine();
 
 
 bool isFound = false;
@@ -112,9 +113,7 @@ bool isFound = false;
 
 var bgThread = new Thread(() =>
 {
-    Console.WriteLine("enter dept to search");
-    string dept = Console.ReadLine();
-
+   
     foreach (var s1 in HospitalDbStore.DepartmentInfo.Values)
     {
 
@@ -144,7 +143,15 @@ var bgThread = new Thread(() =>
         Console.WriteLine("dept not found");
     }
 });
+
+
+
+
+
 bgThread.IsBackground = true;
 bgThread.Start();
+
+
+
 
 
