@@ -9,6 +9,32 @@ var empList = new EmployeeList();
 
 var timer = Stopwatch.StartNew();
 
+//Task task = Task.Factory.StartNew(() =>
+//{
+//    for (int i = 0; i < empList.Count; i++)
+//    {
+//        Console.WriteLine("hi");
+//        empList[i] = ProcessTax.CalculateTax(empList[i]);
+//    }
+
+//}).ContinueWith((t) =>
+//{
+//    Master();
+
+
+//}).ContinueWith((t) =>
+//{
+//    salarySlip();
+
+
+//});
+
+//Task.WaitAll();
+//var totalTime = timer.Elapsed.TotalMilliseconds;
+//Console.WriteLine($"Total Time = {totalTime}");
+//=============================================================================================================================
+
+
 Task task = Task.Factory.StartNew(() =>
 {
     for (int i = 0; i < empList.Count; i++)
@@ -17,48 +43,22 @@ Task task = Task.Factory.StartNew(() =>
         empList[i] = ProcessTax.CalculateTax(empList[i]);
     }
 
-}).ContinueWith((t) =>
+});
+
+
+Task t1 = Task.Factory.StartNew(() =>
 {
     Master();
 
+});
 
-}).ContinueWith((t) =>
+
+Task t2 = Task.Factory.StartNew(() =>
 {
     salarySlip();
-
-
 });
 
 Task.WaitAll();
-var totalTime = timer.Elapsed.TotalMilliseconds;
-Console.WriteLine($"Total Time = {totalTime}");
-//=============================================================================================================================
-
-
-//Task task = Task.Factory.StartNew(() =>
-//{
-//    for (int i = 0; i < empList.Count; i++)
-//    {
-//    Console.WriteLine("hi");
-//    empList[i] = ProcessTax.CalculateTax(empList[i]);
-//    }
-
-//});
-
-
-//Task t1 = Task.Factory.StartNew(() =>
-//{
-//    Master();
-
-//});
-
-
-//Task t2 = Task.Factory.StartNew(() =>
-//{
-//    salarySlip();
-//});
-
-//Task.WaitAll();
 
 async void Master()
 {

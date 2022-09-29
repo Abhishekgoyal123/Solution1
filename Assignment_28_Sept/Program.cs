@@ -30,7 +30,14 @@ Parallel.For(0, empList.Count, (i) =>
 });
 
 
+//Task task = Task.Factory.StartNew(() =>
+//{
+//    for (int i = 0; i < empList.Count; i++)
+//    {
+//        Master(empList[i]);
+//    }
 
+//});
 
 async void Master(Employee ob1)
 {
