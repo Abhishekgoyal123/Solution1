@@ -3,14 +3,9 @@ Account acc = new Account();
 BankTransaction bt = new BankTransaction();
 var ab = new AccountBag();
 
-int amt = bt.Deposit(acc);
+BankingOperation bo = new BankingOperation();
 
-Console.WriteLine($"amount after deposit = {amt}");
-
-
-int amt1 = bt.WithDraw(acc);
-
-Console.WriteLine($"amount after deposit = {amt1}");
+bo.abcd();
 
 
-
+Console.ReadLine();

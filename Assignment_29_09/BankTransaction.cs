@@ -19,7 +19,7 @@ namespace Assignment_29_09
 
         public int WithDraw(Account acc)
         {
-            Console.WriteLine("enter amount to deposit");
+            Console.WriteLine("enter amount to withdraw");
             int withdraw_amt = Convert.ToInt32(Console.ReadLine());
 
             acc.NetBalance = acc.NetBalance - withdraw_amt;
