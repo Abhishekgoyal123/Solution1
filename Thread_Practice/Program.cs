@@ -1,8 +1,9 @@
-﻿//using System.Threading;
-//abcd a = new abcd();
-//Thread T1 = new Thread(new ParameterizedThreadStart(abcd.WriteFirst));
+﻿using System.Threading;
+abcd a = new abcd();
+Thread T1 = new Thread(new ParameterizedThreadStart(abcd.WriteFirst));
 
-//T1.Start(11144444);
+//Thread t = new Thread();
+T1.Start(11144444);
 
 //Thread T2 = new Thread(new ParameterizedThreadStart(abcd.WriteSecond));
 

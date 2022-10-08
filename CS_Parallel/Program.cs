@@ -18,6 +18,7 @@ var parallelTimer = Stopwatch.StartNew();
 
 
 
+
 Parallel.For(0, empList.Count, (i) =>
 {
     empList[i] = ProcessTax.CalculateTax(empList[i]);

@@ -36,16 +36,15 @@ namespace CS_Events
 
     public class DoctorLogic : StaffLogic
     {
-        public event NotificationEventHandler Registration;
+        public event NotificationEventHandler Registration_event;
 
         public override void RegisterStaff(Staff statff)
         {
             if (HospitalDbStore.GlobalStaffStore != null)
             {
                 HospitalDbStore.GlobalStaffStore.Add(statff.StaffId, statff);
-               
-                Registration();
 
+                Registration_event();
             }
         }
         public override Dictionary<int, Staff> GetStatffs()
@@ -214,27 +213,7 @@ namespace CS_Events
         }
 
     }
-    public class EventListener
-    {
-        private DoctorLogic obj;
-
-        public EventListener(DoctorLogic obj)
-        {
-            this.obj = obj;
-            obj.Registration += obj_Registration;
-            //n.Deletion += n_Deletion;
-        }
-
-        private void obj_Registration()
-        {
-            Console.WriteLine("Registration sucessfull");
-        }
-
-        private void n_Deletion()
-        {
-            Console.WriteLine("Deletion sucessfull");
-        }
-    }
+   
 }
 
 

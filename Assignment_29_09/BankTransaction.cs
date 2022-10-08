@@ -8,22 +8,25 @@ namespace Assignment_29_09
 {
     public  class BankTransaction
     {
-        public int Deposit(Account acc)
+        Random random = new Random();
+        public void Deposit(Account acc)
         {
-            Console.WriteLine("enter amount to deposit");
-            int deposit_amt = Convert.ToInt32(Console.ReadLine());
+            
+            
+            int deposit_amt = random.Next(100, 200);
 
             acc.NetBalance = acc.NetBalance + deposit_amt;
-            return acc.NetBalance;
+            Console.WriteLine($"amount after deposit = {acc.NetBalance}");
         }
 
-        public int WithDraw(Account acc)
+        public void WithDraw(Account acc)
         {
-            Console.WriteLine("enter amount to withdraw");
-            int withdraw_amt = Convert.ToInt32(Console.ReadLine());
+        
+            int withdraw_amt =  random.Next(100, 200);
 
             acc.NetBalance = acc.NetBalance - withdraw_amt;
-            return acc.NetBalance;
+            Console.WriteLine($"amount after withdraw = {acc.NetBalance}");
+           // return acc.NetBalance;
         }
     }
 }

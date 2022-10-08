@@ -1,12 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CS_Events;
 
-StaffLogic logic = new DoctorLogic();
+//StaffLogic logic = new DoctorLogic();
 Console.WriteLine("Hello, World!");
 
 //Notification n1 = new Notification
-DoctorLogic obj = new DoctorLogic();
-EventListener listener = new EventListener(obj);
+StaffLogic logic = new DoctorLogic();
+
+notifications n1 = new notifications((DoctorLogic)logic);
 
 
 Doctor d1 = new Doctor()

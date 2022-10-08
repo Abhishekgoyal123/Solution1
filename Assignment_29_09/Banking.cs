@@ -35,8 +35,17 @@ namespace Assignment_29_09
                 public AccountBag()
             {
                     Add(new Account { AccountNo = 1, AccountName = "Acc_1" , Openingbalance = 0, NetBalance=0});
-            
-            }
+                    Add(new Account { AccountNo = 2, AccountName = "Acc_2", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 3, AccountName = "Acc_3", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 4, AccountName = "Acc_4", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 5, AccountName = "Acc_5", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 6, AccountName = "Acc_6", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 7, AccountName = "Acc_7", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 8, AccountName = "Acc_8", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 9, AccountName = "Acc_9", Openingbalance = 0, NetBalance = 0 });
+                    Add(new Account { AccountNo = 10, AccountName = "Acc_10", Openingbalance = 0, NetBalance = 0 });
+
+        }
         }
     
 }
