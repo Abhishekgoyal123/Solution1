@@ -18,35 +18,30 @@ namespace Assignment_29_09
             foreach (var item in ab)
             {
 
-                //        Task t1 = Task.Factory.StartNew(() =>
-                //        {
-                //           Console.Write($"account number = {item.AccountNo}");
-                //            bt.Deposit(acc);
-                //           // Console.WriteLine($"amount after deposit = {net_bal}");
+                Task t1 = Task.Factory.StartNew(() =>
+                {
+                    Console.Write($"account number = {item.AccountNo}");
+                    bt.Deposit(acc);
+                            // Console.WriteLine($"amount after deposit = {net_bal}");
 
 
 
-                //        });
+                });
+
 
                 //    Task.WaitAll(t1);
                 //    //Task.WaitAny(t1);
 
-                //        Task t2 = Task.Factory.StartNew(() =>
-                //        {
-                //           Console.Write($"account number = {item.AccountNo}");
-                //             bt.WithDraw(acc);
-                //            //Console.WriteLine($"amount after withdraw = {net_bal}");
-                //        });
+                Task t2 = Task.Factory.StartNew(() =>
+                {
+                    Console.Write($"account number = {item.AccountNo}");
+                    bt.WithDraw(acc);
+                            //Console.WriteLine($"amount after withdraw = {net_bal}");
+                });
                 //    Task.WaitAll(t2);
                 //Task.WaitAny(t2);
                 // Task.WaitAny(t1,t2);
                 //Task.WaitAll(t1, t2);
-
-
-
-
-
-
 
                 Parallel.Invoke(() =>
                         {
@@ -54,10 +49,6 @@ namespace Assignment_29_09
 
 
                             bt.WithDraw(acc);
-
-
-
-
 
                         });
 
