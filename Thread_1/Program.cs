@@ -30,4 +30,9 @@
 }
 }
 
-static Semaphore sc = new 
+Thread t1 = new Thread(add(1,2));
+
+    static int add(int a, int b)
+{
+    return 10;
+}

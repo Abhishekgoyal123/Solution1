@@ -9,6 +9,9 @@ var empList = new EmployeeList();
 object locker = new object();
 
 
+Master(empList);
+//    salarySlip(empList[i]);
+
 //for (int i = 0; i < empList.Count; i++)
 //{
 //    empList[i] = ProcessTax.CalculateTax(empList[i]);
@@ -20,14 +23,14 @@ object locker = new object();
 
 //}
 
-Parallel.For(0, empList.Count, (i) =>
-{
+//Parallel.For(0, empList.Count, async (i) =>
+//{
 
-    empList[i] = ProcessTax.CalculateTax(empList[i]);
-    Console.WriteLine($"Sequential Tax of {empList[i].EmpNo} {empList[i].EmpName} is = {empList[i].TDS}");
-    Master(empList[i]);
-    salarySlip(empList[i]);
-});
+//    empList[i] = ProcessTax.CalculateTax(empList[i]);
+//    Console.WriteLine($"Sequential Tax of {empList[i].EmpNo} {empList[i].EmpName} is = {empList[i].TDS}");
+//    Master(empList[i]);
+//    salarySlip(empList[i]);
+//});
 
 
 //Task task = Task.Factory.StartNew(() =>
@@ -39,8 +42,9 @@ Parallel.For(0, empList.Count, (i) =>
 
 //});
 
-async void Master(Employee ob1)
+static async void Master()
 {
+    object locker = new object();
     Monitor.Enter(locker);
     Console.WriteLine("hello");
     using (StreamWriter sw = new StreamWriter($@"C:\Assignment\Threading\Master.txt", true))
@@ -53,8 +57,9 @@ async void Master(Employee ob1)
 }
 
 
-async void salarySlip(Employee ob1)
+static async void salarySlip(Employee ob1)
 {
+    object locker = new object();
     Monitor.Enter(locker);
     using (StreamWriter sw = new StreamWriter($@"C:\Assignment\Threading\{ob1.EmpNo}.txt", true))
         {
